@@ -7,7 +7,6 @@
 .heading_container{
     margin-top: 30px;
     margin-bottom: 30px;
-    font-family: 'Coda';
 }
 .container-div{
     margin-top: 20px;
@@ -36,4 +35,7 @@ h5{
 }
 .nav-link{
     font-family: 'DM Sans';
+}
+h2,h3{
+    font-family: 'Coda';
 }

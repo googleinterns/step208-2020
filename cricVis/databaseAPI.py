@@ -76,10 +76,8 @@ which will be list of {matchID:, matchDate:, team1:,team2:} """
 def getAllData():
 	allData = []
 	allMatches = ref.child("MatchDescription").get()
-	print(allMatches)
 	counter=1
 	for matchID in allMatches:
-		print(counter)
 		counter+=1
 		matchData = {}
 		match = allMatches[matchID]
