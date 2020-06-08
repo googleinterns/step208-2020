@@ -29,10 +29,10 @@
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
           {% endif %}
           <div class="button_container">
-            <button type="submit">Log Out</button>
+            <button type="submit" class="btn btn-secondary">Log Out</button>
           </div>
         </form>
-        <div class="list-group match-group">
+        <div class="list-group match-group match-container">
           {% for match in allMatches %}
             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-around match" data-value={{ match.matchID }}>
@@ -68,7 +68,7 @@
           </div>
         </div>
         {% else %}
-        <a href="{% provider_login_url 'google' %}">Login with Google</a>
+        <a href="{% provider_login_url 'google' %}" role="button" class="btn btn-primary">Login with Google</a>
         {% endif %}
       </div>
     </div>
