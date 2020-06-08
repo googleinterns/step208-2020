@@ -35,7 +35,6 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycrypto==2.6.1
 PyGObject==3.30.4
-PyJWT==1.7.1
 python-apt==1.8.4.1
 python3-openid==3.1.0
 pytz==2020.1
