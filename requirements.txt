@@ -34,7 +34,6 @@ protobuf==3.12.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycrypto==2.6.1
-python-apt==0.7.8
 python3-openid==3.1.0
 pytz==2020.1
 pyxdg==0.25
