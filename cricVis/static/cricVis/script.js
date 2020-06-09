@@ -27,11 +27,11 @@
       data: {
         matchID: matchID
       },
-      success: function(chartsData){
-        chartsData = JSON.parse(chartsData);
-        console.log(chartsData);
+      success: function(allData){
+        allData = JSON.parse(allData);
+        console.log(allData);
         enableChartsDiv();
-        plotCharts(chartsData);
+        plotCharts(allData["chartData"]);
       },
       error: function(error){
         console.log(error);
