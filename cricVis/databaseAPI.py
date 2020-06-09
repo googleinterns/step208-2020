@@ -12,6 +12,10 @@ def getSetOfBalls(over):
 		balls[ball] = 0
 	return balls
 
+def getSeasonNumber(matchID):
+	season = db.reference('/MatchDescription').child(matchID).child("season").get()
+	return season
+
 def getColumnValue(columnValue):
 	value = columnValue.split("_")[1]
 	return int(value)
