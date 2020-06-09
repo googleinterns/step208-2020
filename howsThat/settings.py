@@ -25,7 +25,7 @@ SECRET_KEY = '^2!(@2fh=6&=thzin8b^=(t&@rj%wj-w^7mg-mv2v=^f217nk-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','0.0.0.0','127.0.0.1','https://sports-visualization-intern.an.r.appspot.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
