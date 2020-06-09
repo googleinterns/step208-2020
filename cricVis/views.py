@@ -55,6 +55,9 @@ def fetchGraphData(request):
         teams = getTeamNames(matchID)
         matchStats = getMatchStats(matchID,teams)
         playersDismissed =  getPlayersDismissed(matchID,teams)
-        
+        allData = {}
+        allData["playersPlaying"] = getPlayersPlaying(matchID)
+        allData["matchDetails"] = getMatchDetails(matchID)
+        allData["chartData"] = getChartResponse(matchID,matchStats,playersDismissed,teams)
 
-        return HttpResponse(json.dumps(getChartResponse(matchID,matchStats,playersDismissed,teams)))
+        return HttpResponse(json.dumps(allData))
