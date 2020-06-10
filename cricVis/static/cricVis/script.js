@@ -6,6 +6,15 @@
     if (className) element.classList.add(className);
     return element;
   }
+  function createTeamList(teamList,containerName){
+    let listLength = teamList.length;
+    let listContainer = document.getElementById(containerName);
+    for (let i = 0; i < listLength; i++){
+      let listElement = createHTMLElement("li","list-group-item");
+      listElement.appendChild(document.createTextNode(teamList[i]));
+      listContainer.appendChild(listElement);
+    }
+  }
   function displayTeamLists(allData){
     let team1 = allData["matchDetails"]["team1"];
     let team2 = allData["matchDetails"]["team2"];
