@@ -17,6 +17,12 @@
     $("#toggleChartsBar").css("visibility","visible");
     $("#chartsContainer").css("visibility","visible");
   }
+  function displayMatch(allData){
+    emptyMatchElements();
+    enableChartsDiv();
+    displayTeamLists(allData);
+    plotCharts(allData["chartData"]);
+  }
   // on clicking the "View Results" button, send a GET request to fetchGraphData function in views.py and log the chartsData response.
   $('.match-group .match').click(function(){
     $(this).parent().parent().find('.match').removeClass('badge');
