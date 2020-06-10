@@ -12,6 +12,10 @@ def getSetOfBalls(over):
 		balls[ball] = 0
 	return balls
 
+def getSeasonNumber(matchID):
+	season = db.reference('/MatchDescription').child(matchID).child("season").get()
+	return str(season)
+
 def getColumnValue(columnValue):
 	value = columnValue.split("_")[1]
 	return int(value)
@@ -45,8 +49,8 @@ def getWicketDetailsOfTeam(wicketDetails, over, ball):
 	wicket["ball"] = ball
 	return wicket
 
-def getPlayerTeam(playerName):
-	return db.reference('/PlayerDescription').child(playerName).child("team").get()
+def getPlayerTeam(playerName,season):
+	return db.reference('/PlayerDescription').child(playerName).child(season).child("team").get()
 
 """ get the previous over's cumulative runs, used to calculate current over's
 cumulative runs"""
@@ -150,11 +154,13 @@ def getPlayersPlaying(matchID):
 	teamNames = getTeamNames(matchID)
 	team1 = teamNames["team1"]
 	team2 = teamNames["team2"]
+	seasonNumber = getSeasonNumber(matchID)
 	playersPlaying = {team1: [], team2: []}
 	playersOfMatch = db.reference('/PlayerMatch').child(matchID).get()
 	for player in playersOfMatch:
-		team = getPlayerTeam(player)
-		playersPlaying[team].append(player)
+		playerName = playersOfMatch[player]
+		team = getPlayerTeam(playerName,"season_%s" % (seasonNumber))
+		playersPlaying[team].append(playerName)
 	return playersPlaying
 
 """ gets the details: innings, match date, player of match, result of match,

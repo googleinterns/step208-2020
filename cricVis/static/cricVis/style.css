@@ -24,6 +24,11 @@
 .match-active{
     color: green;
 }
+#teamListContainer{
+    width: 600px;
+    display: flex;
+    justify-content: space-evenly;
+}
 #chartsContainer{
     visibility: hidden;
 }
@@ -36,6 +41,6 @@ h5{
 .nav-link{
     font-family: 'DM Sans';
 }
-h2,h3{
+h2,h3,h4{
     font-family: 'Coda';
 }
