@@ -6,6 +6,14 @@
     if (className) element.classList.add(className);
     return element;
   }
+  function displayTeamLists(allData){
+    let team1 = allData["matchDetails"]["team1"];
+    let team2 = allData["matchDetails"]["team2"];
+    $('#team1Heading').append(document.createTextNode(team1));
+    $('#team2Heading').append(document.createTextNode(team2));
+    createTeamList(allData["playersPlaying"][team1],"team1Details");
+    createTeamList(allData["playersPlaying"][team2],"team2Details");
+  }
   function emptyMatchElements(){
     $('#WormChartContainer').empty();
     $('#RunRateChartContainer').empty();
