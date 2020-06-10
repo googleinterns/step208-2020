@@ -68,6 +68,18 @@
           <div id="ManhattanChartContainer" class="container tab-pane"><br>
           </div>
         </div>
+        <div id="teamListContainer">
+          <div>
+            <h4 id="team1Heading"></h4>
+            <ul class="list-group list-group-flush" id="team1Details">
+            </ul>
+          </div>
+          <div>
+            <h4 id="team2Heading"></h4>
+            <ul class="list-group list-group-flush" id="team2Details">
+            </ul>
+          </div>
+        </div>
         {% else %}
         <a href="{% provider_login_url 'google' %}" role="button" class="btn btn-primary">Login with Google</a>
         {% endif %}
