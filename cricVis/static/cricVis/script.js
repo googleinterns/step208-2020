@@ -37,6 +37,12 @@ function addOneBoxResult(matchDetails){
   else resultString += matchDetails["winByWickets"] + " wickets";
   matchResultDiv.append(createTextHTMLElement("p",resultString));
 }
+function addOneBoxDetails(matchDetails){
+  let matchDetailsDiv = $("#matchDetails");
+  matchDetailsDiv.append(createTextHTMLElement("p","Venue: " + matchDetails["venue"],"card-text"));
+  matchDetailsDiv.append(createTextHTMLElement("p","Player of Match: " + matchDetails["playerOfMatch"],"card-text"));
+  matchDetailsDiv.append(createTextHTMLElement("p",matchDetails["team1"] + " batted first","card-text"));
+}
 function createOneBox(matchDetails){
   $("#matchTeams").css("visibility","visible");
   $("#matchDetails").css("visibility","visible");
