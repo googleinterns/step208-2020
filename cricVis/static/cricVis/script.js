@@ -9,7 +9,7 @@ function createHTMLElement(elementType,className=null){
 function createTextHTMLElement(elementType,text,className=null){
   let element = document.createElement(elementType);
   let textNode = document.createTextNode(text);
-  element.addChild(textNode);
+  element.appendChild(textNode);
   if (className) element.classList.add(className);
   return element;
 }
@@ -30,15 +30,15 @@ function displayTeamLists(allData){
   createTeamList(allData["playersPlaying"][team1],"team1Details");
   createTeamList(allData["playersPlaying"][team2],"team2Details");
 }
-function displayMatchTeams(){
-
-}
 function emptyMatchElements(){
   $('#WormChartContainer').empty();
   $('#RunRateChartContainer').empty();
   $('#ManhattanChartContainer').empty();
   $('#team1Details').empty();
   $('#team2Details').empty();
+  $('#matchTeams').empty();
+  $('#matchDetails').empty();
+  $('#matchResult').empty();
 }
 function enableChartsDiv(){
   $("#toggleChartsBar").css("visibility","visible");
@@ -48,6 +48,7 @@ function displayMatch(allData){
   emptyMatchElements();
   enableChartsDiv();
   displayTeamLists(allData);
+  createOneBox(allData["matchDetails"]);
   plotCharts(allData["chartData"]);
 }
 // on clicking the "View Results" button, send a GET request to fetchGraphData function in views.py and log the chartsData response.
