@@ -30,6 +30,13 @@ function displayTeamLists(allData){
   createTeamList(allData["playersPlaying"][team1],"team1Details");
   createTeamList(allData["playersPlaying"][team2],"team2Details");
 }
+function addOneBoxResult(matchDetails){
+  let matchResultDiv = $("#matchResult");
+  let resultString = matchDetails["result"] + " won by ";
+  if (matchDetails["winByRuns"]) resultString += matchDetails["winByRuns"] + " runs";
+  else resultString += matchDetails["winByWickets"] + " wickets";
+  matchResultDiv.append(createTextHTMLElement("p",resultString));
+}
 function createOneBox(matchDetails){
   $("#matchTeams").css("visibility","visible");
   $("#matchDetails").css("visibility","visible");
