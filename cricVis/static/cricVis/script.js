@@ -6,6 +6,13 @@ function createHTMLElement(elementType,className=null){
   if (className) element.classList.add(className);
   return element;
 }
+function createTextHTMLElement(elementType,text,className=null){
+  let element = document.createElement(elementType);
+  let textNode = document.createTextNode(text);
+  element.addChild(textNode);
+  if (className) element.classList.add(className);
+  return element;
+}
 function createTeamList(teamList,containerName){
   let listLength = teamList.length;
   let listContainer = document.getElementById(containerName);
@@ -22,6 +29,9 @@ function displayTeamLists(allData){
   $('#team2Heading').append(document.createTextNode(team2));
   createTeamList(allData["playersPlaying"][team1],"team1Details");
   createTeamList(allData["playersPlaying"][team2],"team2Details");
+}
+function displayMatchTeams(){
+
 }
 function emptyMatchElements(){
   $('#WormChartContainer').empty();
@@ -58,6 +68,7 @@ $('.match-group .match').click(function(){
     },
     success: function(allData){
       allData = JSON.parse(allData);
+      console.log(allData);
       displayMatch(allData);
     },
     error: function(error){
