@@ -65,6 +65,8 @@ function emptyMatchElements(){
   $('#matchTeams').empty();
   $('#matchDetails').empty();
   $('#matchResult').empty();
+  $('#team1Heading').empty();
+  $('#team2Heading').empty();
 }
 function enableChartsDiv(){
   $("#toggleChartsBar").css("visibility","visible");
