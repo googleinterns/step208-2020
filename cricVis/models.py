@@ -14,7 +14,7 @@ teamImageName = {
     "Chennai Super Kings":"cricVis/CSK.png",
     "Rajasthan Royals": "cricVis/RR.png"}
 
-cred = credentials.Certificate('cricVis/static/cricVis/cricVis-sdk.json')
+cred = credentials.Certificate('static/cricVis/cricVis-sdk.json')
 
 initialize_app(cred, {
 	'databaseURL' : 'https://cricvis-1a59f.firebaseio.com/'
