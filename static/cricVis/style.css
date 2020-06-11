@@ -1,0 +1,46 @@
+.main_container{
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heading_container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.container-div{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.match-group{
+    width: 600px;
+    height: 400px;
+    overflow: auto;
+}
+.content{
+    display: flex;
+    justify-content: center;
+}
+.match-active{
+    color: green;
+}
+#teamListContainer{
+    width: 600px;
+    display: flex;
+    justify-content: space-evenly;
+}
+#chartsContainer{
+    visibility: hidden;
+}
+#toggleChartsBar{
+    visibility: hidden;
+}
+h5{
+    font-family: 'DM Sans';
+}
+.nav-link{
+    font-family: 'DM Sans';
+}
+h2,h3,h4{
+    font-family: 'Coda';
+}
