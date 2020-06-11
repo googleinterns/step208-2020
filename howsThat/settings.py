@@ -160,3 +160,8 @@ STATIC_URL = '/static/'
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/cricVis'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/cricVis'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
