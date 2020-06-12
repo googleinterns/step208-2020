@@ -24,7 +24,7 @@ def getInningsDetails(matchStats,playersDismissed,teamName,chartParameter):
         over["playersDismissed"]=[]
         for wicket in playersDismissed:
             if wicket["over"]==record["over"] and wicket["playerDismissed"]!="":
-                over["playersDismissed"].append(wicket["playerDismissed"])
+                over["playersDismissed"].append(wicket)
         overs.append(over)
     inningsDetails["overs"]=overs
     return inningsDetails
