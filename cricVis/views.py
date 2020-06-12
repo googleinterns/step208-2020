@@ -20,6 +20,7 @@ def getInningsDetails(matchStats,playersDismissed,teamName,chartParameter):
     for record in matchStats:
         over={}
         over["overNumber"]=record["over"]
+        over["breakdownRuns"]=record["breakdownRuns"]
         over[chartParameter]=record[chartParameter]
         over["playersDismissed"]=[]
         for wicket in playersDismissed:
