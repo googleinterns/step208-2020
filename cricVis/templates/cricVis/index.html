@@ -21,6 +21,20 @@
         <div class="heading_container">
           <h2> CricVis: A Cricket Data Visualization App </h2>
         </div>
+        <div class="navbar_container">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'cricVis:index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'cricVis:iplStats' %}">IPL Stats</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
         {% if user.is_authenticated %}
         <h3>Welcome, {{ user.username }} !</h3>
         <form method="post" action="{% url 'account_logout' %}">
