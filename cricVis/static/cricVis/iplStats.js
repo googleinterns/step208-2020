@@ -41,7 +41,7 @@ function plotBarChart(data, chartDivID){
   chart.draw(chartData, google.charts.Bar.convertOptions(chartOptions));
 }
 
-function plotPieChart(data){
+function plotPieChart(data,chartDivID){
   let chartData = generateChartData(data["chartData"],data["headers"]);
   let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
   chartOptions[pieHole] = 0.5;
@@ -49,8 +49,11 @@ function plotPieChart(data){
   chart.draw(chartData, chartOptions);
 }
 
-function plotBubbleChart(data){
-
+function plotBubbleChart(data,chartDivID){
+  let chartData = generateChartData(data["chartData"],data["headers"]);
+  let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
+  var chart = new google.charts.BubbleChart(document.getElementById(chartDivID));
+  chart.draw(chartData, google.charts.Bar.convertOptions(chartOptions));
 }
 
 function plotLineChart(data){
