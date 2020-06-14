@@ -74,6 +74,17 @@ function plotLineChart(data,chartDivID){
   chart.draw(chartData, chartOptions);
 }
 
+function mostWinsChart(chartData){
+  let data = {};
+  data["chartData"] = chartData;
+  data["headers"] = ["Winning Team","Number of Match Wins"];
+  data["chartTitle"] = "Most Winning IPL Teams";
+  data["chartSubTitle"] = "Number of match wins by every IPL team";
+  data["chartXAxisTitle"] = "Number of Match Wins";
+  data["chartYAxisTitle"] = "Winning Team";
+  plotBarChart(data, "mostMatchWins")
+}
+
 function drawChart(){
 
 }
