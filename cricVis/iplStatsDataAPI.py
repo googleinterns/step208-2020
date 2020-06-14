@@ -1,14 +1,14 @@
 from cricVis.models import *
 
+teamsList = []
+
 def getTeamsData():
     teamsData = db.reference('/TeamWise').get()
+    setTeamsList(teamsData)
 
-def getTeamsList():
-    teamsData = db.reference('/TeamWise').get()
-    teamsList = []
+def setTeamsList(teamsData):
     for team in teamsData:
         teamsList.append(team)
-    return teamsList
 
 def getSeasonsData():
     seasonsData = db.reference('/SeasonWise').get()
@@ -47,3 +47,5 @@ def getFinalScoreBatFirst(seasonsData):
                 finalScoreBatFirst[season] = {team: seasonData[team]["finalMatchScoreBatting"]}
                 break
     return finalScoreBatFirst
+
+def getLowestScoreTeam()
