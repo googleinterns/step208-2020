@@ -6,6 +6,13 @@ function createHTMLElement(elementType,className=null){
   if (className) element.classList.add(className);
   return element;
 }
+function createTextHTMLElement(elementType,text,className=null){
+  let element = document.createElement(elementType);
+  let textNode = document.createTextNode(text);
+  element.appendChild(textNode);
+  if (className) element.classList.add(className);
+  return element;
+}
 function createTeamList(teamList,containerName){
   let listLength = teamList.length;
   let listContainer = document.getElementById(containerName);
@@ -23,12 +30,43 @@ function displayTeamLists(allData){
   createTeamList(allData["playersPlaying"][team1],"team1Details");
   createTeamList(allData["playersPlaying"][team2],"team2Details");
 }
+function addOneBoxResult(matchDetails){
+  let matchResultDiv = $("#matchResult");
+  let resultString = matchDetails["result"] + " won by ";
+  if (matchDetails["winByRuns"]) resultString += matchDetails["winByRuns"] + " runs";
+  else resultString += matchDetails["winByWickets"] + " wickets";
+  matchResultDiv.append(createTextHTMLElement("p",resultString));
+}
+function addOneBoxDetails(matchDetails){
+  let matchDetailsDiv = $("#matchDetails");
+  matchDetailsDiv.append(createTextHTMLElement("p","Venue: " + matchDetails["venue"],"card-text"));
+  matchDetailsDiv.append(createTextHTMLElement("p","Player of Match: " + matchDetails["playerOfMatch"],"card-text"));
+  matchDetailsDiv.append(createTextHTMLElement("p",matchDetails["team1"] + " batted first","card-text"));
+}
+function addOneBoxTeams(matchDetails){
+  let matchTeamsDiv = $("#matchTeams");
+  matchTeamsDiv.append(createTextHTMLElement("p",matchDetails["team1"] + " v/s " + matchDetails["team2"]));
+  matchTeamsDiv.append(createTextHTMLElement("small",matchDetails["matchDate"]));
+}
+function createOneBox(matchDetails){
+  $("#matchTeams").css("visibility","visible");
+  $("#matchDetails").css("visibility","visible");
+  $("#matchResult").css("visibility","visible");
+  addOneBoxTeams(matchDetails);
+  addOneBoxDetails(matchDetails);
+  addOneBoxResult(matchDetails);
+}
 function emptyMatchElements(){
   $('#WormChartContainer').empty();
   $('#RunRateChartContainer').empty();
   $('#ManhattanChartContainer').empty();
   $('#team1Details').empty();
   $('#team2Details').empty();
+  $('#matchTeams').empty();
+  $('#matchDetails').empty();
+  $('#matchResult').empty();
+  $('#team1Heading').empty();
+  $('#team2Heading').empty();
 }
 function enableChartsDiv(){
   $("#toggleChartsBar").css("visibility","visible");
@@ -38,6 +76,7 @@ function displayMatch(allData){
   emptyMatchElements();
   enableChartsDiv();
   displayTeamLists(allData);
+  createOneBox(allData["matchDetails"]);
   plotCharts(allData["chartData"]);
 }
 // on clicking the "View Results" button, send a GET request to fetchGraphData function in views.py and log the chartsData response.
@@ -58,6 +97,7 @@ $('.match-group .match').click(function(){
     },
     success: function(allData){
       allData = JSON.parse(allData);
+      console.log(allData);
       displayMatch(allData);
     },
     error: function(error){
