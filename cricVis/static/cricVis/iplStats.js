@@ -9,6 +9,11 @@ function convertDataToMatrix(data,headers){
   return matrixData;
 }
 
+function generateChartData(data){
+  let chartdata = google.visualization.arrayToDataTable(convertDataToMatrix(data));
+  return chartdata;
+}
+
 function receiveData(allIPLData){
   console.log(allIPLData);
 }
