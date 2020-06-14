@@ -96,6 +96,17 @@ function plotMostTossWinsChart(chartData){
   plotBarChart(data, "mostTossWins");
 }
 
+function plotMostSeasonWinsChart(chartData){
+  let data = {};
+  data["chartData"] = chartData;
+  data["headers"] = ["Winning Team","Number of Season Wins"];
+  data["chartTitle"] = "Most Season Winning IPL Teams";
+  data["chartSubTitle"] = "Number of season wins by every IPL team";
+  data["chartXAxisTitle"] = "Number of Season Wins";
+  data["chartYAxisTitle"] = "Winning Team";
+  plotBarChart(data, "mostSeasonWins");
+}
+
 function drawChart(){
 
 }
