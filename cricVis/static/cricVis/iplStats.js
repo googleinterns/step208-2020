@@ -14,6 +14,20 @@ function generateChartData(data){
   return chartdata;
 }
 
+function generateOptions(chartTitle,chartSubtitle,chartXAxisTitle,chartYAxisTitle){
+  let options = {
+    title: chartTitle,
+    subtitle: chartSubtitle,
+    hAxis: {
+      title: chartXAxisTitle,
+    },
+    vAxis: {
+      title: chartYAxisTitle,
+    }
+  }
+  return options;
+}
+
 function receiveData(allIPLData){
   console.log(allIPLData);
 }
