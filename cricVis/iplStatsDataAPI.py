@@ -3,6 +3,9 @@ from cricVis.models import *
 def getTeamsData():
     teamsData = db.reference('/TeamWise').get()
 
+def getSeasonsData():
+    seasonsData = db.reference('/SeasonWise').get()
+
 def getTeamsWins(teamsData):
     teamsWins = {}
     for team in teamsData:
