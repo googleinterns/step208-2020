@@ -43,25 +43,25 @@ def getVenuesData():
 def getTeamsWins(teamsData):
     teamsWins = {}
     for team in teamsData:
-        teamsWins[team] = teamsData["matchWins"]
+        teamsWins[team] = teamsData[team]["matchWins"]
     return teamsWins
 
 def getTeamsTossWins(teamsData):
     teamsTossWins = {}
     for team in teamsData:
-        teamsTossWins[team] = teamsData["tossWins"]
+        teamsTossWins[team] = teamsData[team]["tossWins"]
     return teamsTossWins
 
 def getTeamsSeasonWins(teamsData):
     teamsSeasonWins = {}
     for team in teamsData:
-        teamsSeasonWins[team] = teamsData["seasonWins"]
+        teamsSeasonWins[team] = teamsData[team]["seasonWins"]
     return teamsSeasonWins
 
 def getTeamsAvgScore(teamsData):
     teamsAvgScore = {}
     for team in teamsData:
-        teamsAvgScore[team] = teamsData["averageScore"]
+        teamsAvgScore[team] = teamsData[team]["averageScore"]
     return teamsAvgScore
 
 def getFinalScoreBatFirst(seasonsData):
