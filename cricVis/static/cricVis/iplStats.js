@@ -37,6 +37,14 @@ function generateOptions(chartTitle,chartSubtitle,chartXAxisTitle,chartYAxisTitl
 function plotBarChart(data, chartDivID){
   let chartData = generateChartData(data["chartData"],data["headers"]);
   let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
+  chartOptions[bars] = 'horizontal';
+  var chart = new google.charts.Bar(document.getElementById(chartDivID));
+  chart.draw(chartData, google.charts.Bar.convertOptions(chartOptions));
+}
+
+function plotColumnChart(data, chartDivID){
+  let chartData = generateChartData(data["chartData"],data["headers"]);
+  let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
   var chart = new google.charts.Bar(document.getElementById(chartDivID));
   chart.draw(chartData, google.charts.Bar.convertOptions(chartOptions));
 }
