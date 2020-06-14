@@ -38,7 +38,6 @@ def getTeamsAvgWins(teamsData):
     return teamsAvgWins
 
 def getFinalScoreBatFirst(seasonsData):
-    teamsList = getTeamsList()
     finalScoreBatFirst = {}
     for season in seasonsData:
         seasonData = seasonsData[season]
@@ -48,4 +47,13 @@ def getFinalScoreBatFirst(seasonsData):
                 break
     return finalScoreBatFirst
 
-def getLowestScoreTeam()
+def getScoreTeamPerSeason(seasonsData,scoreType):
+    teamsScore = {}
+    for team in teamsList:
+        teamsScore[team] = {}
+    for season in seasonsData:
+        seasonData = seasonsData[season]
+        for team in seasonData:
+            teamsScore[team][season] = seasonData[team][scoreType]
+    return teamsScore
+    
