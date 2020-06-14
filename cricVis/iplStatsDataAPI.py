@@ -20,3 +20,9 @@ def getTeamsSeasonWins(teamsData):
     for team in teamsData:
         teamsSeasonWins[team] = teamsData["seasonWins"]
     return teamsSeasonWins
+
+def getTeamsAvgWins(teamsData):
+    teamsAvgWins = {}
+    for team in teamsData:
+        teamsAvgWins[team] = teamsData["averageScore"]
+    return teamsAvgWins
