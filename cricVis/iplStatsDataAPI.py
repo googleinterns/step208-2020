@@ -13,6 +13,9 @@ def setTeamsList(teamsData):
 def getSeasonsData():
     seasonsData = db.reference('/SeasonWise').get()
 
+def getVenuesData():
+    venuesData = db.reference('/VenueWise').get()
+
 def getTeamsWins(teamsData):
     teamsWins = {}
     for team in teamsData:
