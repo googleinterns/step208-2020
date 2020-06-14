@@ -2,9 +2,25 @@ from cricVis.models import *
 
 teamsList = []
 
+def getIPLStatsData():
+    allTeamsData = getTeamsData()
+    allSeaonsData = getSeasonsData()
+    allVenuesData = getVenuesData()
+    allData = {}
+    allData.update(allTeamsData)
+    allData.update(allSeaonsData)
+    allData.update(allVenuesData)
+    return allData
+
 def getTeamsData():
     teamsData = db.reference('/TeamWise').get()
     setTeamsList(teamsData)
+    allTeamsData = {}
+    allTeamsData["teamWins"] = getTeamsWins(teamsData)
+    allTeamsData["tossWinsTeams"] = getTeamsTossWins(teamsData)
+    allTeamsData["seasonsWinsTeams"] = getTeamsSeasonWins(teamsData)
+    allTeamsData["averageScoreTeams"] = getTeamsAvgScore(teamsData)
+    return allTeamsData
 
 def setTeamsList(teamsData):
     for team in teamsData:
@@ -12,9 +28,17 @@ def setTeamsList(teamsData):
 
 def getSeasonsData():
     seasonsData = db.reference('/SeasonWise').get()
+    allSeasonsData = {}
+    allSeasonsData["finalScoreBatFirst"] = getFinalScoreBatFirst(seasonsData)
+    allSeasonsData["lowestScoreTeams"] = getScoreTeamPerSeason(seasonsData,"lowestScore")
+    allSeasonsData["highestScoreTeams"] = getScoreTeamPerSeason(seasonsData,"highestScore")
+    return allSeasonsData
 
 def getVenuesData():
     venuesData = db.reference('/VenueWise').get()
+    allVenuesData = {}
+    allVenuesData["gamesPlayedCity"], allVenuesData["gamesPlayedStadium"]  = getGamesPlayedVenueWise(venuesData)
+    return allVenuesData
 
 def getTeamsWins(teamsData):
     teamsWins = {}
@@ -34,11 +58,11 @@ def getTeamsSeasonWins(teamsData):
         teamsSeasonWins[team] = teamsData["seasonWins"]
     return teamsSeasonWins
 
-def getTeamsAvgWins(teamsData):
-    teamsAvgWins = {}
+def getTeamsAvgScore(teamsData):
+    teamsAvgScore = {}
     for team in teamsData:
-        teamsAvgWins[team] = teamsData["averageScore"]
-    return teamsAvgWins
+        teamsAvgScore[team] = teamsData["averageScore"]
+    return teamsAvgScore
 
 def getFinalScoreBatFirst(seasonsData):
     finalScoreBatFirst = {}
