@@ -47,3 +47,8 @@
   </body>
 </html>
 <script src="{% static 'cricVis/iplStats.js' %}"></script>
+<script>
+  var allIPLData = '{{ allIPLData|safe }}';
+  allIPLData = JSON.parse(allIPLData);
+  receiveData(allIPLData);
+</script>
