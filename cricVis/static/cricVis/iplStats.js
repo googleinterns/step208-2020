@@ -1,4 +1,5 @@
 google.charts.load("current", {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawChart);
 
 function convertDataToMatrix(data,headers){
   let matrixData = []
@@ -26,6 +27,10 @@ function generateOptions(chartTitle,chartSubtitle,chartXAxisTitle,chartYAxisTitl
     }
   }
   return options;
+}
+
+function drawChart(){
+  
 }
 
 function receiveData(allIPLData){
