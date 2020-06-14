@@ -14,3 +14,9 @@ def getTeamsTossWins(teamsData):
     for team in teamsData:
         teamsTossWins[team] = teamsData["tossWins"]
     return teamsTossWins
+
+def getTeamsSeasonWins(teamsData):
+    teamsSeasonWins = {}
+    for team in teamsData:
+        teamsSeasonWins[team] = teamsData["seasonWins"]
+    return teamsSeasonWins
