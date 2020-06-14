@@ -14,7 +14,7 @@ def index(request):
 
 def iplStats(request):
     allIPLStatsData = getIPLStatsData()
-    context = { "allIPLData": allIPLStatsData }
+    context = { "allIPLData": json.dumps(allIPLStatsData) }
     return render(request,'cricVis/iplStats.html',context)
 
 """ creates the inningsDetails JSON in the required format """
