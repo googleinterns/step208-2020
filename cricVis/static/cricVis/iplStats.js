@@ -52,12 +52,15 @@ function plotPieChart(data,chartDivID){
 function plotBubbleChart(data,chartDivID){
   let chartData = generateChartData(data["chartData"],data["headers"]);
   let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
-  var chart = new google.charts.BubbleChart(document.getElementById(chartDivID));
-  chart.draw(chartData, google.charts.Bar.convertOptions(chartOptions));
+  var chart = new google.visualization.BubbleChart(document.getElementById(chartDivID));
+  chart.draw(chartData, chartOptions);
 }
 
-function plotLineChart(data){
-
+function plotLineChart(data,chartDivID){
+  let chartData = generateChartData(data["chartData"],data["headers"]);
+  let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
+  var chart = new google.visualization.LineChart(document.getElementById(chartDivID));
+  chart.draw(chartData, chartOptions);
 }
 
 function drawChart(){
