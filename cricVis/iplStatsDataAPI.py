@@ -8,3 +8,9 @@ def getTeamsWins(teamsData):
     for team in teamsData:
         teamsWins[team] = teamsData["matchWins"]
     return teamsWins
+
+def getTeamsTossWins(teamsData):
+    teamsTossWins = {}
+    for team in teamsData:
+        teamsTossWins[team] = teamsData["tossWins"]
+    return teamsTossWins
