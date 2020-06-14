@@ -42,7 +42,11 @@ function plotBarChart(data, chartDivID){
 }
 
 function plotPieChart(data){
-
+  let chartData = generateChartData(data["chartData"],data["headers"]);
+  let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
+  chartOptions[pieHole] = 0.5;
+  var chart = new google.visualization.PieChart(document.getElementById(chartDivID));
+  chart.draw(chartData, chartOptions);
 }
 
 function plotBubbleChart(data){
