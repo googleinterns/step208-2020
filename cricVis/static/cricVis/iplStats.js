@@ -74,7 +74,7 @@ function plotLineChart(data,chartDivID){
   chart.draw(chartData, chartOptions);
 }
 
-function mostWinsChart(chartData){
+function plotMostWinsChart(chartData){
   let data = {};
   data["chartData"] = chartData;
   data["headers"] = ["Winning Team","Number of Match Wins"];
@@ -83,6 +83,17 @@ function mostWinsChart(chartData){
   data["chartXAxisTitle"] = "Number of Match Wins";
   data["chartYAxisTitle"] = "Winning Team";
   plotBarChart(data, "mostMatchWins")
+}
+
+function plotMostTossWinsChart(chartData){
+  let data = {};
+  data["chartData"] = chartData;
+  data["headers"] = ["Winning Team","Number of Toss Wins"];
+  data["chartTitle"] = "Most Toss Winning IPL Teams";
+  data["chartSubTitle"] = "Number of toss wins by every IPL team";
+  data["chartXAxisTitle"] = "Number of Toss Wins";
+  data["chartYAxisTitle"] = "Winning Team";
+  plotBarChart(data, "mostTossWins");
 }
 
 function drawChart(){
