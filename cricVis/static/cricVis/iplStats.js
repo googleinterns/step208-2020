@@ -34,6 +34,22 @@ function generateOptions(chartTitle,chartSubtitle,chartXAxisTitle,chartYAxisTitl
   return options;
 }
 
+function plotBarChart(data){
+
+}
+
+function plotPieChart(data){
+
+}
+
+function plotBubbleChart(data){
+
+}
+
+function plotLineChart(data){
+
+}
+
 function drawChart(){
   
 }
