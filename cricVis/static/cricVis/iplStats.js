@@ -18,7 +18,7 @@ function generateChartData(data,headers){
   return chartdata;
 }
 
-function generateOptions(chartTitle,chartSubtitle,chartXAxisTitle,chartYAxisTitle){
+function generateOptions(chartTitle,chartSubtitle,chartXAxisTitle,chartYAxisTitle,chartWidth=900,chartHeight=300){
   let options = {
     title: chartTitle,
     subtitle: chartSubtitle,
@@ -28,8 +28,11 @@ function generateOptions(chartTitle,chartSubtitle,chartXAxisTitle,chartYAxisTitl
     vAxis: {
       title: chartYAxisTitle,
     },
-    width: 900,
-    height: 300,
+    width: chartWidth,
+    height: chartHeight,
+    legend: {
+      position: 'none'
+    },
   }
   return options;
 }
@@ -37,7 +40,7 @@ function generateOptions(chartTitle,chartSubtitle,chartXAxisTitle,chartYAxisTitl
 function plotBarChart(data, chartDivID){
   let chartData = generateChartData(data["chartData"],data["headers"]);
   let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
-  chartOptions[bars] = 'horizontal';
+  chartOptions["bars"] = 'horizontal';
   var chart = new google.charts.Bar(document.getElementById(chartDivID));
   chart.draw(chartData, google.charts.Bar.convertOptions(chartOptions));
 }
@@ -52,7 +55,7 @@ function plotColumnChart(data, chartDivID){
 function plotPieChart(data,chartDivID){
   let chartData = generateChartData(data["chartData"],data["headers"]);
   let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
-  chartOptions[pieHole] = 0.5;
+  chartOptions["pieHole"] = 0.5;
   var chart = new google.visualization.PieChart(document.getElementById(chartDivID));
   chart.draw(chartData, chartOptions);
 }
