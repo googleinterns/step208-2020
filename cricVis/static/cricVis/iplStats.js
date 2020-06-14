@@ -56,6 +56,7 @@ function plotPieChart(data,chartDivID){
   let chartData = generateChartData(data["chartData"],data["headers"]);
   let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
   chartOptions["pieHole"] = 0.5;
+  chartOptions["pieSliceText"] = 'label';
   var chart = new google.visualization.PieChart(document.getElementById(chartDivID));
   chart.draw(chartData, chartOptions);
 }
@@ -105,6 +106,17 @@ function plotMostSeasonWinsChart(chartData){
   data["chartXAxisTitle"] = "Number of Season Wins";
   data["chartYAxisTitle"] = "Winning Team";
   plotBarChart(data, "mostSeasonWins");
+}
+
+function plotAverageScoreChart(chartData){
+  let data = {};
+  data["chartData"] = chartData;
+  data["headers"] = ["Team","Average Score"];
+  data["chartTitle"] = "Average Score of IPL Teams";
+  data["chartSubTitle"] = "Average Score of every IPL team over all seasons";
+  data["chartXAxisTitle"] = "Team";
+  data["chartYAxisTitle"] = "Average Score";
+  plotPieChart(data, "averageScore");
 }
 
 function drawChart(){
