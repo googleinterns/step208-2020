@@ -34,8 +34,11 @@ function generateOptions(chartTitle,chartSubtitle,chartXAxisTitle,chartYAxisTitl
   return options;
 }
 
-function plotBarChart(data){
-
+function plotBarChart(data, chartDivID){
+  let chartData = generateChartData(data["chartData"],data["headers"]);
+  let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
+  var chart = new google.charts.Bar(document.getElementById(chartDivID));
+  chart.draw(chartData, google.charts.Bar.convertOptions(chartOptions));
 }
 
 function plotPieChart(data){
@@ -51,7 +54,7 @@ function plotLineChart(data){
 }
 
 function drawChart(){
-  
+
 }
 
 function receiveData(allIPLData){
