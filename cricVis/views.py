@@ -11,6 +11,9 @@ def index(request):
     context = { "allMatches": allMatches}
     return render(request,'cricVis/index.html',context)
 
+def iplStats(request):
+    return render(request,'cricVis/iplStats.html')
+
 """ creates the inningsDetails JSON in the required format """
 
 def getInningsDetails(matchStats,playersDismissed,teamName,chartParameter):
