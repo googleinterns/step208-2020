@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponse
 import json
 from cricVis.databaseAPI import *
+from cricVis.iplStatsDataAPI import *
 # Create your views here.
 
 """ sent a GET request to get match_ID, team1, team2, match date """
@@ -12,7 +13,9 @@ def index(request):
     return render(request,'cricVis/index.html',context)
 
 def iplStats(request):
-    return render(request,'cricVis/iplStats.html')
+    allIPLStatsData = getIPLStatsData()
+    context = { "allIPLData": allIPLStatsData }
+    return render(request,'cricVis/iplStats.html',context)
 
 """ creates the inningsDetails JSON in the required format """
 
