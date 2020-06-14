@@ -59,4 +59,15 @@ def getScoreTeamPerSeason(seasonsData,scoreType):
         for team in seasonData:
             teamsScore[team][season] = seasonData[team][scoreType]
     return teamsScore
-    
+
+def getGamesPlayedVenueWise(venuesData):
+    stadiumMatches = {}
+    cityMatches = {}
+    for city in venuesData:
+        cityData = venuesData[city]
+        totalCityMatches = 0
+        for stadium in cityData:
+            stadiumMatches[stadium] = cityData[stadium]["numberOfMatches"]
+            totalCityMatches += cityData[stadium]["numberOfMatches"]
+        cityMatches[city] = totalCityMatches
+    return cityMatches, stadiumMatches
