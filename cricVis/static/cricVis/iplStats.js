@@ -134,6 +134,17 @@ function plotFinalScoreBatFirstChart(chartData){
   plotColumnChart(data, "finalScoreBatFirst");
 }
 
+function plotMatchesStadiumChart(chartData){
+  let data = {};
+  data["chartData"] = chartData;
+  data["headers"] = ["Stadium","Number of Matches"];
+  data["chartTitle"] = "Number of IPL Matches per stadium";
+  data["chartSubTitle"] = "A stadium wise distribution of IPL matches";
+  data["chartXAxisTitle"] = "Stadium";
+  data["chartYAxisTitle"] = "Number of Matches";
+  plotColumnChart(data, "mostMatchesStadiumWise");
+}
+
 function drawChart(){
 
 }
