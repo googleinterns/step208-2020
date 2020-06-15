@@ -161,6 +161,22 @@ function plotLowestScoreTeams(chartData){
   }
 }
 
+function plotHighestScoreTeams(chartData){
+  for (let team in chartData){
+    let data = {};
+    data["chartData"] = chartData[team];
+    data["headers"] = ["Season","Highest Score"];
+    data["chartTitle"] = "Highest Score of " + team + " over all seasons";
+    data["chartSubTitle"] = "Per Season highest total";
+    data["chartXAxisTitle"] = "Season";
+    data["chartYAxisTitle"] = "Highest Score";
+    let perTeamDiv = document.createElement("div");
+    perTeamDiv.id = team + "HighestScore";
+    document.getElementById("highestScoreSeasonWise").appendChild(perTeamDiv);
+    plotLineChart(data, perTeamDiv.id);
+  }
+}
+
 function drawChart(){
 
 }
