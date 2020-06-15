@@ -145,6 +145,22 @@ function plotMatchesStadiumChart(chartData){
   plotColumnChart(data, "mostMatchesStadiumWise");
 }
 
+function plotLowestScoreTeams(chartData){
+  for (let team in chartData){
+    let data = {};
+    data["chartData"] = chartData[team];
+    data["headers"] = ["Season","Lowest Score"];
+    data["chartTitle"] = "Lowest Score of " + team + " over all seasons";
+    data["chartSubTitle"] = "Per Season lowest total";
+    data["chartXAxisTitle"] = "Season";
+    data["chartYAxisTitle"] = "Lowest Score";
+    let perTeamDiv = document.createElement("div");
+    perTeamDiv.id = team + "LowestScore";
+    document.getElementById("lowestScoreSeasonWise").appendChild(perTeamDiv);
+    plotLineChart(data, perTeamDiv.id);
+  }
+}
+
 function drawChart(){
 
 }
