@@ -52,8 +52,8 @@ function plotBarChart(data, chartDivID){
 function plotColumnChart(data, chartDivID){
   let chartData = generateChartData(data["chartData"],data["headers"]);
   let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
-  var chart = new google.charts.Bar(document.getElementById(chartDivID));
-  chart.draw(chartData, google.charts.Bar.convertOptions(chartOptions));
+  var chart = new google.visualization.ColumnChart(document.getElementById(chartDivID));
+  chart.draw(chartData, chartOptions);
 }
 
 function plotPieChart(data,chartDivID){
