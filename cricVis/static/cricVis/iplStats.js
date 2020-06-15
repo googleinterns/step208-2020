@@ -123,6 +123,17 @@ function plotAverageScoreChart(chartData){
   plotPieChart(data, "averageScore");
 }
 
+function plotFinalScoreBatFirstChart(chartData){
+  let data = {};
+  data["chartData"] = chartData;
+  data["headers"] = ["Team","Final Match Score", { type: "string", role: "annotation" }];
+  data["chartTitle"] = "Final Match Score of IPL Teams - Bat First";
+  data["chartSubTitle"] = "Total scored by the team which batted first in the final of the season";
+  data["chartXAxisTitle"] = "Team";
+  data["chartYAxisTitle"] = "Final Match Score";
+  plotColumnChart(data, "finalScoreBatFirst");
+}
+
 function drawChart(){
 
 }
