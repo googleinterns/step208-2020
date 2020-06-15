@@ -178,7 +178,14 @@ function plotHighestScoreTeams(chartData){
 }
 
 function drawChart(){
-
+  plotMostWinsChart(allChartData["teamWins"]);
+  plotMostTossWinsChart(allChartData["tossWinsTeams"]);
+  plotMostSeasonWinsChart(allChartData["seasonsWinsTeams"]);
+  plotAverageScoreChart(allChartData["averageScoreTeams"]);
+  plotFinalScoreBatFirstChart(allChartData["finalScoreBatFirst"]);
+  plotLowestScoreTeams(allChartData["lowestScoreTeams"]);
+  plotHighestScoreTeams(allChartData["highestScoreTeams"]);
+  plotMatchesStadiumChart(allChartData["gamesPlayedStadium"]);
 }
 
 function receiveData(allIPLData){
