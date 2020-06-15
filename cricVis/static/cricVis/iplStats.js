@@ -152,6 +152,17 @@ function plotMatchesStadiumChart(chartData){
   plotColumnChart(data, "mostMatchesStadiumWise");
 }
 
+function plotMatchesCityChart(chartData){
+  let data = {};
+  data["chartData"] = chartData;
+  data["headers"] = ["City","Number of Matches"];
+  data["chartTitle"] = "Number of IPL Matches per city";
+  data["chartSubTitle"] = "A city wise distribution of IPL matches";
+  data["chartXAxisTitle"] = "City";
+  data["chartYAxisTitle"] = "Number of Matches";
+  plotGeoChart(data, "mostMatchesCityWise");
+}
+
 function plotLowestScoreTeams(chartData){
   for (let team in chartData){
     let data = {};
