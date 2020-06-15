@@ -6,7 +6,11 @@ function convertDataToMatrix(data,headers){
   let matrixData = []
   matrixData.push(headers);
   for (let xAxis in data){
-    matrixData.push([xAxis, data[xAxis]]);
+    if (typeof(data[xAxis]) === "object"){
+      let key = Object.keys(data[xAxis]);
+      matrixData.push([xAxis, data[xAxis][key[0]], key[0]]);
+    }
+    else matrixData.push([xAxis, data[xAxis]]);
   }
   return matrixData;
 }
