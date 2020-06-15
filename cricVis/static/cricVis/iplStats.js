@@ -1,4 +1,4 @@
-google.charts.load("current", {packages: ['corechart', 'bar']});
+google.charts.load("current", {packages: ['corechart', 'bar', 'geochart']});
 google.charts.setOnLoadCallback(drawChart);
 var allChartData;
 
@@ -76,6 +76,13 @@ function plotLineChart(data,chartDivID){
   let chartData = generateChartData(data["chartData"],data["headers"]);
   let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
   var chart = new google.visualization.LineChart(document.getElementById(chartDivID));
+  chart.draw(chartData, chartOptions);
+}
+
+function plotGeoChart(data,chartDivID){
+  let chartData = generateChartData(data["chartData"],data["headers"]);
+  let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
+  var chart = new google.visualization.GeoChart(document.getElementById(chartDivID));
   chart.draw(chartData, chartOptions);
 }
 
