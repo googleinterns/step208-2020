@@ -2,15 +2,25 @@ google.charts.load("current", {packages: ['corechart', 'bar', 'geochart']});
 google.charts.setOnLoadCallback(drawChart);
 var allChartData;
 
+function getColour(key){
+  if (key in allChartData["teamColour"]) return "color: " + allChartData["teamColour"][key];
+  return "color: #FFBE7D";
+}
+
 function convertDataToMatrix(data,headers){
   let matrixData = []
+  headers.push({ role: "style" });
   matrixData.push(headers);
   for (let xAxis in data){
     if (typeof(data[xAxis]) === "object"){
       let key = Object.keys(data[xAxis]);
-      matrixData.push([xAxis, data[xAxis][key[0]], key[0]]);
+      let colour = getColour(key[0]);
+      matrixData.push([xAxis, data[xAxis][key[0]], key[0], colour]);
     }
-    else matrixData.push([xAxis, data[xAxis]]);
+    else {
+      let colour = getColour(xAxis);
+      matrixData.push([xAxis, data[xAxis], colour]);
+    }
   }
   return matrixData;
 }
@@ -56,8 +66,8 @@ function plotBarChart(data, chartDivID){
   let chartData = generateChartData(data["chartData"],data["headers"]);
   let chartOptions = generateOptions(data["chartTitle"],data["chartSubTitle"],data["chartXAxisTitle"],data["chartYAxisTitle"]);
   chartOptions["bars"] = 'horizontal';
-  var chart = new google.charts.Bar(document.getElementById(chartDivID));
-  chart.draw(chartData, google.charts.Bar.convertOptions(chartOptions));
+  var chart = new google.visualization.BarChart(document.getElementById(chartDivID));
+  chart.draw(chartData, chartOptions);
 }
 
 function plotColumnChart(data, chartDivID){
