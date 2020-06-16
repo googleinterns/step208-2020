@@ -98,91 +98,43 @@ function plotGeoChart(data,chartDivID){
 }
 
 function plotMostWinsChart(chartData){
-  let data = {};
-  data["chartData"] = chartData;
-  data["headers"] = ["Winning Team","Number of Match Wins"];
-  data["chartTitle"] = "Most Winning IPL Teams";
-  data["chartSubTitle"] = "Number of match wins by every IPL team";
-  data["chartXAxisTitle"] = "Number of Match Wins";
-  data["chartYAxisTitle"] = "Winning Team";
+  let data = createDataPacket(chartData,["Winning Team","Number of Match Wins"],"Most Winning IPL Teams","Number of match wins by every IPL team","Number of Match Wins","Winning Team");
   plotBarChart(data, "mostMatchWins")
 }
 
 function plotMostTossWinsChart(chartData){
-  let data = {};
-  data["chartData"] = chartData;
-  data["headers"] = ["Winning Team","Number of Toss Wins"];
-  data["chartTitle"] = "Most Toss Winning IPL Teams";
-  data["chartSubTitle"] = "Number of toss wins by every IPL team";
-  data["chartXAxisTitle"] = "Number of Toss Wins";
-  data["chartYAxisTitle"] = "Winning Team";
+  let data = createDataPacket(chartData,["Winning Team","Number of Toss Wins"],"Most Toss Winning IPL Teams","Number of toss wins by every IPL team","Number of Toss Wins","Winning Team");
   plotBarChart(data, "mostTossWins");
 }
 
 function plotMostSeasonWinsChart(chartData){
-  let data = {};
-  data["chartData"] = chartData;
-  data["headers"] = ["Winning Team","Number of Season Wins"];
-  data["chartTitle"] = "Most Season Winning IPL Teams";
-  data["chartSubTitle"] = "Number of season wins by every IPL team";
-  data["chartXAxisTitle"] = "Number of Season Wins";
-  data["chartYAxisTitle"] = "Winning Team";
+  let data = createDataPacket(chartData,["Winning Team","Number of Season Wins"],"Most Season Winning IPL Teams","Number of season wins by every IPL team","Most Season Winning IPL Teams","Number of season wins by every IPL team","Number of Season Wins","Winning Team");
   plotBarChart(data, "mostSeasonWins");
 }
 
 function plotAverageScoreChart(chartData){
-  let data = {};
-  data["chartData"] = chartData;
-  data["headers"] = ["Team","Average Score"];
-  data["chartTitle"] = "Average Score of IPL Teams";
-  data["chartSubTitle"] = "Average Score of every IPL team over all seasons";
-  data["chartXAxisTitle"] = "Team";
-  data["chartYAxisTitle"] = "Average Score";
+  let data = createDataPacket(chartData,["Team","Average Score"],"Average Score of IPL Teams","Average Score of every IPL team over all seasons","Team","Average Score");
   plotPieChart(data, "averageScore");
 }
 
 function plotFinalScoreBatFirstChart(chartData){
-  let data = {};
-  data["chartData"] = chartData;
-  data["headers"] = ["Team","Final Match Score", { type: "string", role: "annotation" }];
-  data["chartTitle"] = "Final Match Score of IPL Teams - Bat First";
-  data["chartSubTitle"] = "Total scored by the team which batted first in the final of the season";
-  data["chartXAxisTitle"] = "Team";
-  data["chartYAxisTitle"] = "Final Match Score";
+  let data = createDataPacket(chartData,["Team","Final Match Score", { type: "string", role: "annotation" }],"Final Match Score of IPL Teams - Bat First","Total scored by the team which batted first in the final of the season","Team","Final Match Score");
   plotColumnChart(data, "finalScoreBatFirst");
 }
 
 function plotMatchesStadiumChart(chartData){
-  let data = {};
-  data["chartData"] = chartData;
-  data["headers"] = ["Stadium","Number of Matches"];
-  data["chartTitle"] = "Number of IPL Matches per stadium";
-  data["chartSubTitle"] = "A stadium wise distribution of IPL matches";
-  data["chartXAxisTitle"] = "Stadium";
-  data["chartYAxisTitle"] = "Number of Matches";
+  let data = createDataPacket(chartData,["Stadium","Number of Matches"],"Number of IPL Matches per stadium","A stadium wise distribution of IPL matches","Stadium","Number of Matches");
   plotColumnChart(data, "mostMatchesStadiumWise");
 }
 
 function plotMatchesCityChart(chartData){
-  let data = {};
-  data["chartData"] = chartData;
-  data["headers"] = ["City","Number of Matches"];
-  data["chartTitle"] = "Number of IPL Matches per city";
-  data["chartSubTitle"] = "A city wise distribution of IPL matches";
-  data["chartXAxisTitle"] = "City";
-  data["chartYAxisTitle"] = "Number of Matches";
+  let data = createDataPacket(chartData,["City","Number of Matches"],"Number of IPL Matches per city","A city wise distribution of IPL matches","City","Number of Matches");
   plotGeoChart(data, "mostMatchesCityWise");
 }
 
 function plotLowestScoreTeams(chartData){
   for (let team in chartData){
-    let data = {};
-    data["chartData"] = chartData[team];
-    data["headers"] = ["Season","Lowest Score"];
-    data["chartTitle"] = "Lowest Score of " + team + " over all seasons";
-    data["chartSubTitle"] = "Per Season lowest total";
-    data["chartXAxisTitle"] = "Season";
-    data["chartYAxisTitle"] = "Lowest Score";
+    let data = createDataPacket(chartData[team],["Season","Lowest Score"],"Lowest Score of " + team + " over all seasons","Per Season lowest total","Season","Lowest Score");
     let perTeamDiv = document.createElement("div");
     perTeamDiv.id = team + "LowestScore";
     document.getElementById("lowestScoreSeasonWise").appendChild(perTeamDiv);
@@ -192,13 +144,7 @@ function plotLowestScoreTeams(chartData){
 
 function plotHighestScoreTeams(chartData){
   for (let team in chartData){
-    let data = {};
-    data["chartData"] = chartData[team];
-    data["headers"] = ["Season","Highest Score"];
-    data["chartTitle"] = "Highest Score of " + team + " over all seasons";
-    data["chartSubTitle"] = "Per Season highest total";
-    data["chartXAxisTitle"] = "Season";
-    data["chartYAxisTitle"] = "Highest Score";
+    let data = createDataPacket(chartData[team],["Season","Highest Score"],"Highest Score of " + team + " over all seasons","Per Season highest total","Season","Highest Score");
     let perTeamDiv = document.createElement("div");
     perTeamDiv.id = team + "HighestScore";
     document.getElementById("highestScoreSeasonWise").appendChild(perTeamDiv);
