@@ -49,7 +49,7 @@
 </html>
 <script src="{% static 'cricVis/iplStats.js' %}"></script>
 <script>
-  var allIPLData = '{{ allIPLData|safe }}';
+  var allIPLData = '{{ allIPLData | escapejs }}';
   allIPLData = JSON.parse(allIPLData);
   receiveData(allIPLData);
 </script>
