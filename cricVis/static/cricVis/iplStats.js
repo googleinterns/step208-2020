@@ -15,6 +15,17 @@ function convertDataToMatrix(data,headers){
   return matrixData;
 }
 
+function createDataPacket(chartData, chartHeaders, chartTitle, chartSubTitle, chartXAxisTitle, chartYAxisTitle){
+  let data = {};
+  data["chartData"] = chartData;
+  data["headers"] = chartHeaders;
+  data["chartTitle"] = chartTitle;
+  data["chartSubTitle"] = chartSubTitle;
+  data["chartXAxisTitle"] = chartXAxisTitle;
+  data["chartYAxisTitle"] = chartYAxisTitle;
+  return data;
+}
+
 function generateChartData(data,headers){
   let matrixData = convertDataToMatrix(data,headers);
   console.log(matrixData);
