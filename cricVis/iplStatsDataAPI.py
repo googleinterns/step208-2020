@@ -10,11 +10,13 @@ def getIPLStatsData():
     allData.update(allTeamsData)
     allData.update(allSeaonsData)
     allData.update(allVenuesData)
+    allData["teamColour"] = teamColour
     return allData
 
 def getTeamsData():
     teamsData = db.reference('/TeamWise').get()
     setTeamsList(teamsData)
+    print(teamsList)
     allTeamsData = {}
     allTeamsData["teamWins"] = getTeamsWins(teamsData)
     allTeamsData["tossWinsTeams"] = getTeamsTossWins(teamsData)
@@ -55,7 +57,8 @@ def getTeamsTossWins(teamsData):
 def getTeamsSeasonWins(teamsData):
     teamsSeasonWins = {}
     for team in teamsData:
-        teamsSeasonWins[team] = teamsData[team]["seasonWins"]
+        if teamsData[team]["seasonWins"] != 0:
+            teamsSeasonWins[team] = teamsData[team]["seasonWins"]
     return teamsSeasonWins
 
 def getTeamsAvgScore(teamsData):
