@@ -1,0 +1,11 @@
+#timeSlider{
+    width: 500px;
+    height: 10px;
+    border-radius: 3px;
+}
+#timeSlider::-webkit-slider-thumb{
+    appearance: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
