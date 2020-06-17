@@ -14,6 +14,9 @@ def index(request):
 def iplStats(request):
     return render(request,'cricVis/iplStats.html')
 
+def timeSeries(request):
+    return render(request,'cricVis/timeSeries.html')
+
 """ creates the inningsDetails JSON in the required format """
 
 def getInningsDetails(matchStats,playersDismissed,teamName,chartParameter):
