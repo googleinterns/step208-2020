@@ -1,6 +1,6 @@
 from cricVis.models import *
 
-def getVisualizationResponse(visualizationRequest):
+def getVisualizationResponse(visualizationRequest,queue):
     visualizationResponse = {}
     visualizationResponse["metaDataResponse"] = getMetaDataResponse(
         visualizationRequest["metaDataRequest"]["playerType"],
@@ -11,7 +11,7 @@ def getVisualizationResponse(visualizationRequest):
         visualizationRequest["endDate"]
         )
     visualizationResponse["chartDataResponse"] = getChartDataResponse(visualizationRequest)
-    return visualizationResponse
+    queue.put(visualizationResponse)
 
 def getTableName(metaDataRequest):
     return metaDataRequest["playerType"] + metaDataRequest["gameFormat"] +metaDataRequest["gender"] 
