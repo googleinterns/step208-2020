@@ -19,3 +19,12 @@ def getResponseMetaData(playerType, gameFormat, gender, field, top, startDate, e
     responseMetaData["xAxisLabel"] = field
     responseMetaData["yAxisLabel"] = playerType[wordPostion:]
     return responseMetaData
+
+def getChartDataResponse(visualizationRequest):
+    tableName = getTableName(visualizationRequest["metaDataRequest"])
+    years = getYearsInRange(visualizationRequest["startDate"], visualizationRequest["endDate"], tableName)
+    chartDataResponse = {}
+    for year in years:
+        yearResponse = getTopScoresForAYear(tableName, year, visualizationRequest["field"])
+        chartDataResponse[year] = yearResponse 
+    return chartDataResponse
