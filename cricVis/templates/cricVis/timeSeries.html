@@ -43,6 +43,67 @@
             <input type="text" id="startDate" placeholder="Enter Start Date">
             <input type="text" id="endDate" placeholder="Enter End Date">
           </div>
+          <h3>Select Player and Field Type</h3>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Batsman</h5>
+                  <div class="fieldContainer">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="runsScored" value="runsScored">
+                      <label class="custom-control-label" for="runsScored">Runs Scored</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="fours" value="fours">
+                      <label class="custom-control-label" for="fours">Fours</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="sixes" value="sixes">
+                      <label class="custom-control-label" for="sixes">Sixes</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="strikeRate" value="strikeRate">
+                      <label class="custom-control-label" for="strikeRate">Strike Rate</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="fifties" value="fifties">
+                      <label class="custom-control-label" for="fifties">Fifties</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="hundreds" value="hundreds">
+                      <label class="custom-control-label" for="hundreds">Hundreds</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Bowler</h5>
+                  <div class="fieldContainer">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="runsConceded" value="runsConceded">
+                      <label class="custom-control-label" for="runsConceded">Runs Conceded</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="wickets" value="wickets">
+                      <label class="custom-control-label" for="wickets">Wickets</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="economyRate" value="economyRate">
+                      <label class="custom-control-label" for="economyRate">Economy</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="maidens" value="maidens">
+                      <label class="custom-control-label" for="maidens">Maidens</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="timeSliderContainer">
           <input type="range" min="0" max="100" step="10" id="timeSlider">
