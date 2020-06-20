@@ -144,9 +144,9 @@ function plotMatchesCityChart(chartData){
 
 function plotLowestScoreTeams(chartData){
   for (let team in chartData){
-    let data = createDataPacket(chartData[team],["Season","Lowest Score"],"Lowest Score of " + team + " over all seasons","Per Season lowest total","Season","Lowest Score");
+    let data = createDataPacket(chartData[team],["Season","Lowest Score"],`Lowest Score of ${team} over all seasons`,"Per Season lowest total","Season","Lowest Score");
     let perTeamDiv = document.createElement("div");
-    perTeamDiv.id = team + "LowestScore";
+    perTeamDiv.id = `${team} LowestScore`;
     document.getElementById("lowestScoreSeasonWise").appendChild(perTeamDiv);
     plotLineChart(data, perTeamDiv.id);
   }
@@ -154,9 +154,9 @@ function plotLowestScoreTeams(chartData){
 
 function plotHighestScoreTeams(chartData){
   for (let team in chartData){
-    let data = createDataPacket(chartData[team],["Season","Highest Score"],"Highest Score of " + team + " over all seasons","Per Season highest total","Season","Highest Score");
+    let data = createDataPacket(chartData[team],["Season","Highest Score"],`Highest Score of ${team} over all seasons`,"Per Season highest total","Season","Highest Score");
     let perTeamDiv = document.createElement("div");
-    perTeamDiv.id = team + "HighestScore";
+    perTeamDiv.id = `${team} HighestScore`;
     document.getElementById("highestScoreSeasonWise").appendChild(perTeamDiv);
     plotLineChart(data, perTeamDiv.id);
   }
