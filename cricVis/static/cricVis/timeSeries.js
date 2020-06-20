@@ -14,3 +14,8 @@ $('.batsmanInput').on('input', function(){
         $(this).prop('disabled', false);
     });
 });
+$('.bowlerInput').on('input', function(){
+    $('input:checkbox[name=matchType]').each(function(){
+        $(this).prop('disabled', false);
+    });
+});
