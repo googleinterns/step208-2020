@@ -9,3 +9,8 @@ $('#endDate').on('input', function(){
         $(this).prop('disabled', false);
     });
 });
+$('.batsmanInput').on('input', function(){
+    $('input:checkbox[name=matchType]').each(function(){
+        $(this).prop('disabled', false);
+    });
+});
