@@ -24,3 +24,6 @@ $('.matchTypeInput').on('input', function(){
         $(this).prop('disabled', false);
     });
 });
+$('.genderInput').on('input', function(){
+    $('#fetchTimeSeriesDataButton').prop('disabled', false);
+});
