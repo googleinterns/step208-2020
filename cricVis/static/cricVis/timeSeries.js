@@ -28,10 +28,18 @@ $('.bowlerInput').on('input', function(){
     });
 });
 $('.matchTypeInput').on('input', function(){
-    $('input:checkbox[name=genderInput]').each(function(){
+    $('input:checkbox[name=gender]').each(function(){
         $(this).prop('disabled', false);
     });
 });
 $('.genderInput').on('input', function(){
     $('#fetchTimeSeriesDataButton').prop('disabled', false);
+});
+$('#fetchTimeSeriesDataButton').click(function(){
+    const startDate = $('#startDate').val();
+    const endDate = $('#endDate').val();
+    const batsmanFields = getSelectedCheckboxValues('Batsman');
+    const bowlerFields = getSelectedCheckboxValues('Bowler');
+    const matchTypes = getSelectedCheckboxValues('matchType');
+    const genders = getSelectedCheckboxValues('gender');
 });
