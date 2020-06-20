@@ -66,5 +66,17 @@ $('#fetchTimeSeriesDataButton').click(function(){
     const visualizationResquestsBatsman = getVisualizationRequestData(batsmanFields, genders, matchTypes, startDate, endDate, "Batsman");
     const visualizationResquestsBowler = getVisualizationRequestData(batsmanFields, genders, matchTypes, startDate, endDate, "Bowler");
     const visalizationRequests = visualizationResquestsBatsman.concat(visualizationResquestsBowler);
-
+    $.ajax({
+        type: 'GET',
+        url: '/cricVis/fetchTimeSeriesData',
+        data: {
+            visualizationRequest: visalizationRequests
+        },
+        success: function(visalizationResponses){
+            console.log(visalizationResponses);
+        },
+        error: function(error){
+          console.log(error);
+        }
+    });
 });
