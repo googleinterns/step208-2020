@@ -1,5 +1,5 @@
 $('#startDate').on('input', function(){
-    document.getElementById('endDate').disabled = false;
+    $('#endDate').prop('disabled', false);
     $('#endDate').on('input', function(){
         $('input:checkbox[name=Batsman]').each(function(){
             $(this).prop('disabled', false);
