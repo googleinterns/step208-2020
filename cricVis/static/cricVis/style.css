@@ -72,3 +72,7 @@ h2,h3,h4{
     display: flex;
     justify-content: center;
 }
+.dateFields{
+    margin-left: 15px;
+    margin-right: 15px;
+}
