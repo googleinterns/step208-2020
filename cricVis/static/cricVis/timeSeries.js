@@ -6,6 +6,27 @@ function getSelectedCheckboxValues(checkboxGroupName){
     return selectedValues
 }
 
+function getVisualizationRequestData(fields, genders, matchTypes, startDate, endDate, playerType){
+    let visalizationRequests = [];
+    fields.forEach(function(field){
+        matchTypes.forEach(function(matchType){
+            genders.forEach(function(gender){
+                let visalizationRequest = {};
+                visalizationRequest["startDate"] = startDate;
+                visalizationRequest["endDate"] = endDate;
+                visalizationRequest["field"] = field;
+                let metaDataRequest = {};
+                metaDataRequest["playerType"] = playerType;
+                metaDataRequest["gameFormat"] = matchType;
+                metaDataRequest["gender"] = gender;
+                visalizationRequest["metaDataRequest"] = metaDataRequest;
+                visalizationRequests.push(visalizationRequest);
+            });
+        });
+    });
+    return visalizationRequests;
+}
+
 $('#startDate').on('input', function(){
     $('#endDate').prop('disabled', false);
 });
