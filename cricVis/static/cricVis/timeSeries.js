@@ -63,4 +63,8 @@ $('#fetchTimeSeriesDataButton').click(function(){
     const bowlerFields = getSelectedCheckboxValues('Bowler');
     const matchTypes = getSelectedCheckboxValues('matchType');
     const genders = getSelectedCheckboxValues('gender');
+    const visualizationResquestsBatsman = getVisualizationRequestData(batsmanFields, genders, matchTypes, startDate, endDate, "Batsman");
+    const visualizationResquestsBowler = getVisualizationRequestData(batsmanFields, genders, matchTypes, startDate, endDate, "Bowler");
+    const visalizationRequests = visualizationResquestsBatsman.concat(visualizationResquestsBowler);
+
 });
