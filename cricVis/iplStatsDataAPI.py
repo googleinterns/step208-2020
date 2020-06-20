@@ -89,7 +89,7 @@ def getFinalScoreBatFirst(seasonsData):
     for season in seasonsData:
         seasonData = seasonsData[season]
         for team in teamsList:
-            if team in seasonData and seasonData[team]["finalMatchScoreBatting"]!=0:
+            if team in seasonData and seasonData[team]["finalMatchScoreBatting"] != 0:
                 finalScoreBatFirst[season] = {team: seasonData[team]["finalMatchScoreBatting"]}
                 break
     return finalScoreBatFirst
@@ -113,9 +113,8 @@ def getGamesPlayedVenueWise(venuesData):
     cityMatches = {}
     for city in venuesData:
         cityData = venuesData[city]
-        totalCityMatches = 0
+        cityMatches[city] = 0
         for stadium in cityData:
             stadiumMatches[stadium] = cityData[stadium]["numberOfMatches"]
-            totalCityMatches += cityData[stadium]["numberOfMatches"]
-        cityMatches[city] = totalCityMatches
+            cityMatches[city] += cityData[stadium]["numberOfMatches"]
     return cityMatches, stadiumMatches
