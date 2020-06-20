@@ -19,3 +19,8 @@ $('.bowlerInput').on('input', function(){
         $(this).prop('disabled', false);
     });
 });
+$('.matchTypeInput').on('input', function(){
+    $('input:checkbox[name=genderInput]').each(function(){
+        $(this).prop('disabled', false);
+    });
+});
