@@ -1,3 +1,11 @@
+function getSelectedCheckboxValues(checkboxGroupName){
+    let selectedValues = [];
+    $(`input:checkbox[name=${checkboxGroupName}]:checked`).each(function(){
+        selectedValues.push($(this).val());
+    });
+    return selectedValues
+}
+
 $('#startDate').on('input', function(){
     $('#endDate').prop('disabled', false);
 });
