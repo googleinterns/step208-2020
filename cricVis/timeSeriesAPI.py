@@ -1,6 +1,6 @@
 from cricVis.models import *
 
-def getVisualizationResponse(visualizationRequest,queue):
+def getVisualizationResponse(visualizationRequest, queue):
     visualizationResponse = {}
     visualizationResponse["metaDataResponse"] = getMetaDataResponse(
         visualizationRequest["metaDataRequest"]["playerType"],
@@ -14,7 +14,7 @@ def getVisualizationResponse(visualizationRequest,queue):
     queue.put(visualizationResponse)
 
 def getTableName(metaDataRequest):
-    return metaDataRequest["playerType"] + metaDataRequest["gameFormat"] +metaDataRequest["gender"] 
+    return metaDataRequest["playerType"] + "Performance" + metaDataRequest["gameFormat"] + metaDataRequest["gender"] 
 
 def getYearsInRange(startDate, endDate, tableName):
     return ref.child(tableName).order_by_key().start_at(str(startDate)).end_at(str(endDate)).get().keys()
@@ -24,10 +24,9 @@ def getTopScoresForAYear(tableName, year, field, top=10):
 
 def getMetaDataResponse(playerType, gameFormat, gender, field, startDate, endDate, top=10):
     responseMetaData = {}
-    wordPostion = playerType.find("Performance")
-    responseMetaData["title"] = "Top {} {} in {} {} from {} to {}".format(top, playerType[:wordPostion], gender, gameFormat, startDate, endDate)
+    responseMetaData["title"] = "Top {} {} in {} {} from {} to {}".format(top, playerType, gender, gameFormat, startDate, endDate)
     responseMetaData["xAxisLabel"] = field
-    responseMetaData["yAxisLabel"] = playerType[:wordPostion]
+    responseMetaData["yAxisLabel"] = playerType
     return responseMetaData
 
 def getChartDataResponse(visualizationRequest):
