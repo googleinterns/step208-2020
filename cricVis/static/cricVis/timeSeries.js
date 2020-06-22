@@ -1,3 +1,5 @@
+// get the selected values from a checkbox group
+
 function getSelectedCheckboxValues(checkboxGroupName){
   let selectedValues = [];
   $(`input:checkbox[name=${checkboxGroupName}]:checked`).each(function(){
@@ -5,6 +7,9 @@ function getSelectedCheckboxValues(checkboxGroupName){
   });
   return selectedValues;
 }
+
+/* create a visualization request for every individual option selected 
+and return a set of requests */
 
 function getVisualizationRequestData(fields, genders, matchTypes, startDate, endDate, playerType){
   let visalizationRequests = [];
@@ -26,6 +31,9 @@ function getVisualizationRequestData(fields, genders, matchTypes, startDate, end
   });
   return visalizationRequests;
 }
+
+/* keep enabling the following checkboxes on sleection of one, 
+so that no invalid data get's submitted */
 
 $('#startDate').on('input', function(){
   $('#endDate').prop('disabled', false);
@@ -61,6 +69,8 @@ $('.matchTypeInput').on('input', function(){
 $('.genderInput').on('input', function(){
   $('#fetchTimeSeriesDataButton').prop('disabled', false);
 });
+
+// send an AJAX GET to get a set of responses corresponding to the set of requests
 
 $('#fetchTimeSeriesDataButton').click(function(){
   const startDate = $('#startDate').val();
