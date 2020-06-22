@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^fetchGraphData/$', views.fetchGraphData, name='fetchGraphData'), #URL for GET function to fetch chart response
     url(r'^iplStats/$', views.iplStats, name='iplStats'),
     url(r'^timeSeries/$', views.timeSeries, name='timeSeries'),
+    url(r'^fetchTimeSeriesData/$', views.fetchTimeSeriesData, name='fetchTimeSeriesData'),
 ]
