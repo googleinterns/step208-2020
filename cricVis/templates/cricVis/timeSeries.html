@@ -51,27 +51,27 @@
                   <h5 class="card-title">Batsman</h5>
                   <div class="fieldContainer">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="runsScored" value="runsScored" name="Batsman" disabled>
+                      <input type="checkbox" class="custom-control-input batsmanInput" id="runsScored" value="runsScored" name="Batsman" disabled>
                       <label class="custom-control-label" for="runsScored">Runs Scored</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="fours" value="fours" name="Batsman" disabled>
+                      <input type="checkbox" class="custom-control-input batsmanInput" id="fours" value="fours" name="Batsman" disabled>
                       <label class="custom-control-label" for="fours">Fours</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="sixes" value="sixes" name="Batsman" disabled>
+                      <input type="checkbox" class="custom-control-input batsmanInput" id="sixes" value="sixes" name="Batsman" disabled>
                       <label class="custom-control-label" for="sixes">Sixes</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="strikeRate" value="strikeRate" name="Batsman" disabled>
+                      <input type="checkbox" class="custom-control-input batsmanInput" id="strikeRate" value="strikeRate" name="Batsman" disabled>
                       <label class="custom-control-label" for="strikeRate">Strike Rate</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="fifties" value="fifties" name="Batsman" disabled>
+                      <input type="checkbox" class="custom-control-input batsmanInput" id="fifties" value="fifties" name="Batsman" disabled>
                       <label class="custom-control-label" for="fifties">Fifties</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="hundreds" value="hundreds" name="Batsman" disabled>
+                      <input type="checkbox" class="custom-control-input batsmanInput" id="hundreds" value="hundreds" name="Batsman" disabled>
                       <label class="custom-control-label" for="hundreds">Hundreds</label>
                     </div>
                   </div>
@@ -84,19 +84,19 @@
                   <h5 class="card-title">Bowler</h5>
                   <div class="fieldContainer">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="runsConceded" value="runsConceded" name="Bowler" disabled>
+                      <input type="checkbox" class="custom-control-input bowlerInput" id="runsConceded" value="runsConceded" name="Bowler" disabled>
                       <label class="custom-control-label" for="runsConceded">Runs Conceded</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="wickets" value="wickets" name="Bowler" disabled>
+                      <input type="checkbox" class="custom-control-input bowlerInput" id="wickets" value="wickets" name="Bowler" disabled>
                       <label class="custom-control-label" for="wickets">Wickets</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="economyRate" value="economyRate" name="Bowler" disabled>
+                      <input type="checkbox" class="custom-control-input bowlerInput" id="economyRate" value="economyRate" name="Bowler" disabled>
                       <label class="custom-control-label" for="economyRate">Economy</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="maidens" value="maidens" name="Bowler" disabled>
+                      <input type="checkbox" class="custom-control-input bowlerInput" id="maidens" value="maidens" name="Bowler" disabled>
                       <label class="custom-control-label" for="maidens">Maidens</label>
                     </div>
                   </div>
@@ -111,15 +111,15 @@
                   <h5 class="card-title">Select Match Type</h5>
                   <div class="fieldContainer">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="ODI" value="ODI" name="matchType" disabled>
+                      <input type="checkbox" class="custom-control-input matchTypeInput" id="ODI" value="ODI" name="matchType" disabled>
                       <label class="custom-control-label" for="ODI">ODI</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="T20" value="T20" name="matchType" disabled>
+                      <input type="checkbox" class="custom-control-input matchTypeInput" id="T20" value="T20" name="matchType" disabled>
                       <label class="custom-control-label" for="T20">T20</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="Test" value="Test" name="matchType" disabled>
+                      <input type="checkbox" class="custom-control-input matchTypeInput" id="Test" value="Test" name="matchType" disabled>
                       <label class="custom-control-label" for="Test">Tests</label>
                     </div>
                   </div>
@@ -132,11 +132,11 @@
                   <h5 class="card-title">Select Gender</h5>
                   <div class="fieldContainer">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="Men" value="Men" name="gender" disabled>
+                      <input type="checkbox" class="custom-control-input genderInput" id="Men" value="Men" name="gender" disabled>
                       <label class="custom-control-label" for="Men">Men</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="Women" value="Women" name="gender" disabled>
+                      <input type="checkbox" class="custom-control-input genderInput" id="Women" value="Women" name="gender" disabled>
                       <label class="custom-control-label" for="Women">Women</label>
                     </div>
                   </div>
@@ -144,9 +144,10 @@
               </div>
             </div>
           </div>          
-          <button type="button" class="btn btn-outline-primary">Submit</button>
+          <button type="button" class="btn btn-outline-primary" disabled id="fetchTimeSeriesDataButton">Submit</button>
         </div>
       </div>
     </div>
   </body>
 </html>
+<script src="{% static 'cricVis/timeSeries.js' %}"></script>
