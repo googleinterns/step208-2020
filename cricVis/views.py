@@ -72,11 +72,12 @@ def fetchGraphData(request):
 
 def fetchTimeSeriesData(request):
     if request.method == "GET":
-        visualizationRequest = request.GET["visualizationRequest"]
+        visualizationRequests = request.GET.getlist('visualizationRequest[]',[])
+        visualizationRequests = [json.loads(visualizationRequest) for visualizationRequest in visualizationRequests]
         visualizationResponses = []
-        for request in visualizationRequest:
-            response = getVisualizationResponse.delay(request)
+        for visualizationRequest in visualizationRequests:
+            response = getVisualizationResponse.delay(visualizationRequest)
             collectedResponse = response.collect()
             for i in collectedResponse:
                 visualizationResponses.append(i[1])
-        return visualizationResponses
+        return HttpResponse(json.dumps(visualizationResponses))

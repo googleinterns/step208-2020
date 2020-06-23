@@ -25,7 +25,7 @@ function getVisualizationRequestData(fields, genders, matchTypes, startDate, end
         metaDataRequest["gameFormat"] = matchType;
         metaDataRequest["gender"] = gender;
         visalizationRequest["metaDataRequest"] = metaDataRequest;
-        visalizationRequests.push(visalizationRequest);
+        visalizationRequests.push(JSON.stringify(visalizationRequest));
       });
     });
   });
@@ -73,6 +73,7 @@ $('.genderInput').on('input', function(){
 // send an AJAX GET to get a set of responses corresponding to the set of requests
 
 $('#fetchTimeSeriesDataButton').click(function(){
+  console.log("entered");
   const startDate = $('#startDate').val();
   const endDate = $('#endDate').val();
   const batsmanFields = getSelectedCheckboxValues('Batsman');
@@ -80,7 +81,7 @@ $('#fetchTimeSeriesDataButton').click(function(){
   const matchTypes = getSelectedCheckboxValues('matchType');
   const genders = getSelectedCheckboxValues('gender');
   const visualizationResquestsBatsman = getVisualizationRequestData(batsmanFields, genders, matchTypes, startDate, endDate, "Batsman");
-  const visualizationResquestsBowler = getVisualizationRequestData(batsmanFields, genders, matchTypes, startDate, endDate, "Bowler");
+  const visualizationResquestsBowler = getVisualizationRequestData(bowlerFields, genders, matchTypes, startDate, endDate, "Bowler");
   const visalizationRequests = visualizationResquestsBatsman.concat(visualizationResquestsBowler);
   $.ajax({
     type: 'GET',
@@ -89,7 +90,7 @@ $('#fetchTimeSeriesDataButton').click(function(){
       visualizationRequest: visalizationRequests
     },
     success: function(visalizationResponses){
-      console.log(visalizationResponses);
+      console.log(JSON.parse(visalizationResponses));
     },
     error: function(error){
       console.log(error);
