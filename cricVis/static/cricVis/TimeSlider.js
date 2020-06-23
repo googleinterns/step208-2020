@@ -5,7 +5,10 @@ class TimeSlider{
     this.sliderIDNumber = sliderIDNumber;
     this.chartData = chartData;
   }
-  createTimeSlider(){
-    
+  createHTMLElement(elementType, elementID, elementClass){
+    let element = document.createElement(elementType);
+    element.id = elementID;
+    element.classList.add(elementClass);
+    return element;
   }
 }
