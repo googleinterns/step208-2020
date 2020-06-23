@@ -5,4 +5,7 @@ class TimeSlider{
     this.sliderIDNumber = sliderIDNumber;
     this.chartData = chartData;
   }
+  createTimeSlider(){
+    
+  }
 }
