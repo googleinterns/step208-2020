@@ -142,22 +142,12 @@ function plotMatchesCityChart(chartData){
   plotGeoChart(data, "mostMatchesCityWise");
 }
 
-function plotLowestScoreTeams(chartData){
+function plotScoreTeams(chartData, scoreType, scoreTypeDiv){
   for (let team in chartData){
-    let data = createDataPacket(chartData[team],["Season","Lowest Score"],`Lowest Score of ${team} over all seasons`,"Per Season lowest total","Season","Lowest Score");
+    let data = createDataPacket(chartData[team],["Season",`${scoreType} Score`],`${scoreType} Score of ${team} over all seasons`,`Per Season ${scoreType} total`,"Season",`${scoreType} Score`);
     let perTeamDiv = document.createElement("div");
-    perTeamDiv.id = `${team} LowestScore`;
-    document.getElementById("lowestScoreSeasonWise").appendChild(perTeamDiv);
-    plotLineChart(data, perTeamDiv.id);
-  }
-}
-
-function plotHighestScoreTeams(chartData){
-  for (let team in chartData){
-    let data = createDataPacket(chartData[team],["Season","Highest Score"],`Highest Score of ${team} over all seasons`,"Per Season highest total","Season","Highest Score");
-    let perTeamDiv = document.createElement("div");
-    perTeamDiv.id = `${team} HighestScore`;
-    document.getElementById("highestScoreSeasonWise").appendChild(perTeamDiv);
+    perTeamDiv.id = `${team}${scoreType}Score`;
+    document.getElementById(scoreTypeDiv).appendChild(perTeamDiv);
     plotLineChart(data, perTeamDiv.id);
   }
 }
@@ -168,8 +158,8 @@ function drawChart(){
   plotMostSeasonWinsChart(allChartData["seasonsWinsTeams"]);
   plotAverageScoreChart(allChartData["averageScoreTeams"]);
   plotFinalScoreBatFirstChart(allChartData["finalScoreBatFirst"]);
-  plotLowestScoreTeams(allChartData["lowestScoreTeams"]);
-  plotHighestScoreTeams(allChartData["highestScoreTeams"]);
+  plotScoreTeams(allChartData["lowestScoreTeams"],"Lowest","lowestScoreSeasonWise");
+  plotScoreTeams(allChartData["highestScoreTeams"],"Highest","highestScoreSeasonWise");
   plotMatchesStadiumChart(allChartData["gamesPlayedStadium"]);
 }
 
