@@ -5,6 +5,9 @@ class TimeSlider{
     this.sliderIDNumber = sliderIDNumber;
     this.chartData = chartData;
     this.dateList = this.createDateList(this.chartData["chartDataResponse"]);
+    this.sliderID = `timeSlider${this.sliderIDNumber}`;
+    this.sliderBubbleID = `timeSliderValueBubble${this.sliderIDNumber}`;
+    this.createTimeSlider();
   }
   createDateList(chartDataResponse){
     let dateList = [];
