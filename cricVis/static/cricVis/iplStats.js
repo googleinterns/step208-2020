@@ -63,7 +63,6 @@ function plotColumnChart(chartData, chartOptions, chartDivID){
 }
 
 function plotPieChart(chartData, chartOptions ,chartDivID){
-  chartOptions["pieHole"] = 0.5;
   chartOptions["pieSliceText"] = 'label';
   var chart = new google.visualization.PieChart(document.getElementById(chartDivID));
   chart.draw(chartData, chartOptions);
@@ -127,11 +126,19 @@ function plotMatchesCityChart(chartData){
 }
 
 function plotScoreTeams(chartData, scoreType, scoreTypeDiv){
+  let flag = true;
   for (let team in chartData){
     let data = generateChartData(chartData[team],["Season",`${scoreType} Score`]);
     let chartOptions = generateOptions(`${scoreType} Score of ${team} over all seasons`,`Per Season ${scoreType} total`,"Season",`${scoreType} Score`);
+    chartOptions.height = 200;
     let perTeamDiv = document.createElement("div");
     perTeamDiv.id = `${team}${scoreType}Score`;
+    if (flag) {
+      perTeamDiv.classList.add("carousel-item");
+      perTeamDiv.classList.add("active");
+      flag = false;
+    }
+    else perTeamDiv.classList.add("carousel-item");
     document.getElementById(scoreTypeDiv).appendChild(perTeamDiv);
     plotLineChart(data, chartOptions, perTeamDiv.id);
   }
