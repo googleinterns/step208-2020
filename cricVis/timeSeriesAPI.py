@@ -1,7 +1,9 @@
 from cricVis.models import *
+from howsThat.celery import app
 
 """ assemble the chart data and met data response and return a JSON """
 
+@app.task(trail=True)
 def getVisualizationResponse(visualizationRequest):
     visualizationResponse = {}
     visualizationResponse["metaDataResponse"] = getMetaDataResponse(
