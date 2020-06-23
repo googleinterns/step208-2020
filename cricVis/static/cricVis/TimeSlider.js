@@ -19,6 +19,10 @@ class TimeSlider{
   }
   createTimeSlider(){
     const sliderElement = this.createHTMLElement("input", `timeSlider${this.sliderIDNumber}`, "timeSlider");
+    sliderElement.min = 0;
+    sliderElement.value = 0;
+    sliderElement.type = "range";
+    sliderElement.step = 5;
     const sliderBubble = this.createHTMLElement("span", `timeSliderValueBubble${this.sliderIDNumber}`, "timeSliderValueBubble");
     let sliderContainer = this.createHTMLElement("div", `timeSliderContainer${this.sliderIDNumber}`, "timeSliderContainer");
     sliderContainer.appendChild(sliderBubble);
