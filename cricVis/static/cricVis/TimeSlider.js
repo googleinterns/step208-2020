@@ -53,4 +53,7 @@ class TimeSlider{
       classObject.drawChart(classObject.chartData["chartDataResponse"][year]);
     });
   }
+  drawChart(chartData){
+    this.clearChartDiv();
+  } 
 }
