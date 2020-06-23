@@ -44,11 +44,11 @@ class TimeSlider{
   }
   useSlider(){
     const classObject = this;
-    $(classObject.sliderID).on('input', function() {
+    $(`#${classObject.sliderID}`).on('input', function() {
       const currentPositionSlider = $(this).val();
       const portion = (currentPositionSlider) / ($(this).attr('max'));
-      $(classObject.sliderBubbleID).text(classObject.dateList[currentPositionSlider / 5]);
-      $(classObject.sliderBubbleID).css('left', portion * $(classObject.sliderID).width());
+      $(`#${classObject.sliderBubbleID}`).text(classObject.dateList[currentPositionSlider / 5]);
+      $(`#${classObject.sliderBubbleID}`).css('left', portion * $(`#${classObject.sliderID}`).width());
     });
   } 
 }
