@@ -24,12 +24,19 @@ class TimeSlider{
     sliderContainer.appendChild(sliderBubble);
     sliderContainer.appendChild(sliderElement);
     document.getElementById(this.carouselID).appendChild(sliderContainer);
+    this.enableSlider()
   }
   createHTMLElement(elementType, elementID, elementClass){
     let element = document.createElement(elementType);
     element.id = elementID;
     element.classList.add(elementClass);
     return element;
+  }
+  enableSlider(){
+    const rangeMax = (this.dateList.length - 1) * 5;
+    document.getElementById(this.sliderID).max = rangeMax.toString();
+    document.getElementById(this.sliderBubbleID).innerHTML = this.dateList[0];
+    this.useSlider();
   }
   useSlider(){
     const classObject = this;
