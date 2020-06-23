@@ -4,6 +4,15 @@ class TimeSlider{
     this.chartDivID = chartDivID;
     this.sliderIDNumber = sliderIDNumber;
     this.chartData = chartData;
+    this.dateList = this.createDateList(this.chartData["chartDataResponse"]);
+  }
+  createDateList(chartDataResponse){
+    let dateList = [];
+    Object.keys(chartDataResponse).forEach(function(date){
+      dateList.push(date);
+    });
+    dateList.sort();
+    return dateList;
   }
   createTimeSlider(){
     const sliderElement = this.createHTMLElement("input", `timeSlider${this.sliderIDNumber}`, "timeSlider");
