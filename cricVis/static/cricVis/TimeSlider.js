@@ -56,4 +56,7 @@ class TimeSlider{
   drawChart(chartData){
     this.clearChartDiv();
   } 
+  clearChartDiv(){
+    $(`#${this.chartDivID}`).empty();
+  }
 }
