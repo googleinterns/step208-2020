@@ -47,8 +47,10 @@ class TimeSlider{
     $(`#${classObject.sliderID}`).on('input', function() {
       const currentPositionSlider = $(this).val();
       const portion = (currentPositionSlider) / ($(this).attr('max'));
-      $(`#${classObject.sliderBubbleID}`).text(classObject.dateList[currentPositionSlider / 5]);
+      const year = classObject.dateList[currentPositionSlider / 5];
+      $(`#${classObject.sliderBubbleID}`).text(year);
       $(`#${classObject.sliderBubbleID}`).css('left', portion * $(`#${classObject.sliderID}`).width());
+      classObject.drawChart(classObject.chartData["chartDataResponse"][year]);
     });
-  } 
+  }
 }
