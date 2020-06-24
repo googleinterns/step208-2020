@@ -44,19 +44,14 @@ class TimeSlider{
   }
   useSlider(){
     const classObject = this;
+    classObject.createChart(classObject.chartDivID, classObject.chartData["metaDataResponse"], classObject.chartData["chartDataResponse"][classObject.dateList[0]]);
     $(`#${classObject.sliderID}`).on('input', function() {
       const currentPositionSlider = $(this).val();
       const portion = (currentPositionSlider) / ($(this).attr('max'));
       const year = classObject.dateList[currentPositionSlider / 5];
       $(`#${classObject.sliderBubbleID}`).text(year);
       $(`#${classObject.sliderBubbleID}`).css('left', portion * $(`#${classObject.sliderID}`).width());
-      classObject.drawChart(classObject.chartData["chartDataResponse"][year]);
+      classObject.createChart(classObject.chartDivID, classObject.chartData["metaDataResponse"], classObject.chartData["chartDataResponse"][year]);
     });
-  }
-  drawChart(chartData){
-    this.clearChartDiv();
-  } 
-  clearChartDiv(){
-    $(`#${this.chartDivID}`).empty();
   }
 }
