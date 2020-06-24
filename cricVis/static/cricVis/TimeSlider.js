@@ -65,4 +65,28 @@ class TimeSlider{
       return 0;
     }
  }
+  createChart(chartDivID, metaDataResponse, yearResponse) {
+    $(`#${chartDivID}`).empty();
+    let chartValues = [];
+    Object.keys(yearResponse).forEach((value) => {
+      chartValues.push({"xValue":value, "yValue":yearResponse[value]});
+    });
+    chartValues.sort(this.getSortOrderDescending("yValue"));
+    const data = new google.visualization.DataTable();
+    data.addColumn('string', metaDataResponse.xAxisLabel);
+    data.addColumn('number', metaDataResponse.yAxisLabel);
+    chartValues.forEach((value) => {
+      data.addRow([value.xValue, value.yValue]);
+    });
+
+    const options = {
+      width: 800,
+      chart: {
+        title: metaDataResponse.title,
+      },
+      bars: 'horizontal',
+    };
+    const chart = new google.charts.Bar(document.getElementById(chartDivID));
+    chart.draw(data, options);
+  }
 }
