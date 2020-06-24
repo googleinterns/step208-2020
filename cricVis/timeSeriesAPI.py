@@ -1,4 +1,4 @@
-from cricVis.models import *
+from cricVis.timeSeriesDatabase import *
 from howsThat.celery import app
 
 """ assemble the chart data and met data response and return a JSON """
@@ -20,7 +20,7 @@ def getVisualizationResponse(visualizationRequest):
 """ get the table name to fetch the data from using the player, match and gender type"""
 
 def getTableName(metaDataRequest):
-    return metaDataRequest["playerType"] + "Performance" + metaDataRequest["gameFormat"] + metaDataRequest["gender"] 
+    return metaDataRequest["playerType"] + "Performance" + metaDataRequest["gameFormat"] + metaDataRequest["gender"]
 
 """ get the years in the given start and end date """
 
@@ -49,5 +49,5 @@ def getChartDataResponse(visualizationRequest):
     chartDataResponse = {}
     for year in years:
         yearResponse = getTopScoresForAYear(tableName, year, visualizationRequest["field"])
-        chartDataResponse[year] = yearResponse 
+        chartDataResponse[year] = yearResponse
     return chartDataResponse

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "crickettimeseriesvis",
+  "private_key_id": "e339af4232989be48422f86f71cc606dd89d37c4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCrSfKAnBk3XGJR\n/afuHBDCHngkmLtp487+zDJTGIq30lrhcwLKxOmkZQ1FDzBmtF7+OX9ru3lZPk2Z\nW3b/O37+mr08tzmUqg19+Axv5oSp9zcxWzLl39nlPhvivcL9SUKOyt2Kkoyzy6Z4\n7cRZHYWeM1d/+qp+cdB1OZjOSz3XOSIrG6fBWy+CkhKbNlecj//+oVQjaHanKMw8\neuBQxNWDUgltcM1+DHssxZ9BfmPTFxjnmvCjh8pi5NYMWm0nv8W1/ji2dcABCb49\nc/XK4wOp3j35HssW5nd0WcUuYF+R3Sy/RnH8FkQEwJk2RjCQowKHIKxFqdTANKif\n547B/kB9AgMBAAECggEACT6PcPN7xOoegFBRTN+E5AUi9M6tZrSdylCY8rUjX3Jh\n50L+xpTEC1RM2ApO0WwwqEXQI69ViER9iaZPEM1UOEd/qRQ2bliTK9ZETZHCXS3z\nc515bMCdEOs+NAmLyYG3rt8x/7WTFG0MSgCDFVArkvMwaL7Njs9zsa/vGEslRkU/\nbtE+KrV6cpkUA9EvTtWeJdn2kugEewJU3F5Q3hdLa3R8/te1QmYJLFwUhORdKdBp\nrKXoUi3kP86Zl5tORtGiruUupjentcXOVULVl8b5dtmQTAtJqBcoBJpqd8DeB3oP\nDQhm7+ncpGl+RQWPUynP8ro80aMwlbp5McUX2l+RHQKBgQDi4dSJRAzOHQkfbssr\nDryZLF4O7dSpyiWOCjg263rbvcuAlCj3bvWCLmoQaFQOY6R869Z3bR0MDqhowzwU\nuqdQrVSPiyZxZZEpR980QqJBzxjTo6niqo2pHtdtuWi4EM7Ax5yTKfPW6NZHPLaJ\n01NFjIjg8jt6tYFol4MuYq8AKwKBgQDBRZwqAENeIlSTkfM8L6rxm5wMClM2GT6a\nI0PyikMinFlpH5SxpS4FDVJNa70cmx9EZuqw7+fagXun+BAYb2sA+VQSKQtG+ggG\n4IHNuEVMsBD3kjYtlsYWqCIS+a8TP+j22ojw0e6QQ8kfM2c9TiEebr7pOhklpXCG\nASItmgzF9wKBgQDVrM5YAKj2rU3cNqJNiPGCaNCkysSQq/s2jNVok9n/ff5cuCzk\n67F4y3HExhzz+E///rTbgP3sTxm4oLbC5w+Q4c1T6z9naLqP4EqMk3zw8bR2Dht/\niBUmhA9sHURMpjeyQ8xopQgrDNpR+RIJN+ejBroa8Menx6167cb0NqiORQKBgFxo\nkwVGAO/2TCgOxZTGWd6Rf2gGW8jnAxahu/AwiW74AIwRzH+vsbQ6rVpVJCOUS7vh\n1V7qJhpEhMJICjIUu73IeJkCROEX1VSsbYPWElRbbpFguETN7UKR+1DFTx9OFG5L\nCOTUC1OxBW3Enx0hyRYK738GB1YHpyh7TEMvf+H7AoGBAJ7+0qgmHuCzKWBzwjuY\nXphLC7s/s/99aNgZj6UZYwSJqFocs/O9GYsjWD0EQyfFvw2E5srqGeqHMLbDjO0P\n8JYHBgMRWhnhC83ml9MYlAYG3WCmdlRLtKPFF1u04jzSVG1A7jx7/iuiA4uMa42c\n9CBUWnUebO7AxiBkAIQqkC3f\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-p9kzs@crickettimeseriesvis.iam.gserviceaccount.com",
+  "client_id": "116879372075982153002",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-p9kzs%40crickettimeseriesvis.iam.gserviceaccount.com"
+}
