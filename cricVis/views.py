@@ -3,6 +3,7 @@ from django.http import Http404, HttpResponse
 import json
 from cricVis.databaseAPI import *
 from cricVis.iplStatsDataAPI import *
+from cricVis.timeSeriesAPI import *
 # Create your views here.
 
 """ sent a GET request to get match_ID, team1, team2, match date """
@@ -16,6 +17,9 @@ def iplStats(request):
     allIPLStatsData = getIPLStatsData()
     context = { "allIPLData": json.dumps(allIPLStatsData) }
     return render(request,'cricVis/iplStats.html',context)
+
+def timeSeries(request):
+    return render(request,'cricVis/timeSeries.html')
 
 """ creates the inningsDetails JSON in the required format """
 
@@ -68,3 +72,15 @@ def fetchGraphData(request):
         allData["chartData"] = getChartResponse(matchID,matchStats,playersDismissed,teams)
 
         return HttpResponse(json.dumps(allData))
+
+def fetchTimeSeriesData(request):
+    if request.method == "GET":
+        visualizationRequests = request.GET.getlist('visualizationRequest[]',[])
+        visualizationRequests = [json.loads(visualizationRequest) for visualizationRequest in visualizationRequests]
+        visualizationResponses = []
+        for visualizationRequest in visualizationRequests:
+            response = getVisualizationResponse.delay(visualizationRequest)
+            collectedResponse = response.collect()
+            for i in collectedResponse:
+                visualizationResponses.append(i[1])
+        return HttpResponse(json.dumps(visualizationResponses))
