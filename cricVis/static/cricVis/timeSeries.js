@@ -90,7 +90,7 @@ $('#fetchTimeSeriesDataButton').click(function(){
       visualizationRequest: visalizationRequests
     },
     success: function(visalizationResponses){
-      console.log(JSON.parse(visalizationResponses));
+      addCarousel(JSON.parse(visalizationResponses));
     },
     error: function(error){
       console.log(error);
