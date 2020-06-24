@@ -7,26 +7,26 @@ function getColour(key){
   return "color: #FFBE7D";
 }
 
-function convertDataToMatrix(data,headers){
+function convertDataToMatrix(data,headers, color=null){
   let matrixData = []
   headers.push({ role: "style" });
   matrixData.push(headers);
   for (let xAxis in data){
     if (typeof(data[xAxis]) === "object"){
       let key = Object.keys(data[xAxis]);
-      let colour = getColour(key[0]);
+      if (!color) colour = getColour(key[0]);
       matrixData.push([xAxis, data[xAxis][key[0]], key[0], colour]);
     }
     else {
-      let colour = getColour(xAxis);
+      if (!color) colour = getColour(xAxis);
       matrixData.push([xAxis, data[xAxis], colour]);
     }
   }
   return matrixData;
 }
 
-function generateChartData(data,headers){
-  let matrixData = convertDataToMatrix(data,headers);
+function generateChartData(data,headers, color=null){
+  let matrixData = convertDataToMatrix(data,headers, color);
   console.log(matrixData);
   let chartdata = google.visualization.arrayToDataTable(matrixData);
   return chartdata;
@@ -128,7 +128,7 @@ function plotMatchesCityChart(chartData){
 function plotScoreTeams(chartData, scoreType, scoreTypeDiv){
   let flag = true;
   for (let team in chartData){
-    let data = generateChartData(chartData[team],["Season",`${scoreType} Score`]);
+    let data = generateChartData(chartData[team],["Season",`${scoreType} Score`], allChartData["teamColour"][team]);
     let chartOptions = generateOptions(`${scoreType} Score of ${team} over all seasons`,`Per Season ${scoreType} total`,"Season",`${scoreType} Score`);
     chartOptions.height = 200;
     let perTeamDiv = document.createElement("div");
