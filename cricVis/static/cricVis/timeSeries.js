@@ -97,3 +97,19 @@ $('#fetchTimeSeriesDataButton').click(function(){
     }
   });
 });
+function addCarousel(VisualizationResponses) {
+  let carouselInnerDiv = document.getElementById('carouselContainer');
+  for (var i = 0; i < VisualizationResponses.length; i++) {
+    let carouselItem = document.createElement("div");
+    carouselItem.className = "carousel-item carouselDiv";
+    carouselItem.id = "carouselDiv"+i.toString();
+    if (i==0) {
+      carouselItem.className += " active"
+    }
+    carouselInnerDiv.appendChild(carouselItem);
+    let chartDiv = document.createElement("div");
+    chartDiv.id = "chartDiv"+i.toString();
+    carouselItem.appendChild(chartDiv);
+    const slider = new TimeSlider(carouselItem.id, chartDiv.id, i, VisualizationResponses[i]);
+ }
+}
