@@ -12,6 +12,7 @@ def getIPLStatsData():
     allData.update(allTeamsData)
     allData.update(allSeaonsData)
     allData.update(allVenuesData)
+    allData["teamColour"] = teamColour
     return allData
 
 """ get all data from the TeamWise table in the required format """
@@ -19,6 +20,7 @@ def getIPLStatsData():
 def getTeamsData():
     teamsData = db.reference('/TeamWise').get()
     setTeamsList(teamsData)
+    print(teamsList)
     allTeamsData = {}
     allTeamsData["teamWins"] = getTeamsWins(teamsData)
     allTeamsData["tossWinsTeams"] = getTeamsTossWins(teamsData)
@@ -71,7 +73,8 @@ def getTeamsTossWins(teamsData):
 def getTeamsSeasonWins(teamsData):
     teamsSeasonWins = {}
     for team in teamsData:
-        teamsSeasonWins[team] = teamsData[team]["seasonWins"]
+        if teamsData[team]["seasonWins"] != 0:
+            teamsSeasonWins[team] = teamsData[team]["seasonWins"]
     return teamsSeasonWins
 
 """ get the average score of every team over all the seasons: { teamName: averageScore } """

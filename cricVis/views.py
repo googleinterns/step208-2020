@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponse
 import json
 from cricVis.databaseAPI import *
+from cricVis.iplStatsDataAPI import *
 from cricVis.timeSeriesAPI import *
 # Create your views here.
 
@@ -13,7 +14,9 @@ def index(request):
     return render(request,'cricVis/index.html',context)
 
 def iplStats(request):
-    return render(request,'cricVis/iplStats.html')
+    allIPLStatsData = getIPLStatsData()
+    context = { "allIPLData": json.dumps(allIPLStatsData) }
+    return render(request,'cricVis/iplStats.html',context)
 
 def timeSeries(request):
     return render(request,'cricVis/timeSeries.html')
