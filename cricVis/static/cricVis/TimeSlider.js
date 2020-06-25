@@ -80,7 +80,7 @@ class TimeSlider{
     });
 
     const options = {
-      width: 800,
+      height: 600,
       chart: {
         title: metaDataResponse.title,
       },
