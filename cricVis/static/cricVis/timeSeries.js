@@ -70,6 +70,9 @@ $('.genderInput').on('input', function(){
   $('#fetchTimeSeriesDataButton').prop('disabled', false);
 });
 
+$('.carousel').carousel({
+  interval: false,
+});
 // send an AJAX GET to get a set of responses corresponding to the set of requests
 
 $('#fetchTimeSeriesDataButton').click(function(){
@@ -101,11 +104,12 @@ function addCarousel(VisualizationResponses) {
   let carouselInnerDiv = document.getElementById('carouselContainer');
   for (var i = 0; i < VisualizationResponses.length; i++) {
     let carouselItem = document.createElement("div");
-    carouselItem.className = "carousel-item carouselDiv";
+    carouselItem.className = "carousel-item";
     carouselItem.id = "carouselDiv"+i.toString();
     if (i==0) {
       carouselItem.className += " active"
     }
+    carouselItem.className += " carouselDiv";
     carouselInnerDiv.appendChild(carouselItem);
     let chartDiv = document.createElement("div");
     chartDiv.id = "chartDiv"+i.toString();
