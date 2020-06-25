@@ -101,6 +101,7 @@ $('#fetchTimeSeriesDataButton').click(function(){
   });
 });
 function addCarousel(VisualizationResponses) {
+  document.getElementById("timeSeriesCarousel").style.visibility = 'visible';
   let carouselInnerDiv = document.getElementById('carouselContainer');
   for (var i = 0; i < VisualizationResponses.length; i++) {
     let carouselItem = document.createElement("div");
@@ -110,10 +111,14 @@ function addCarousel(VisualizationResponses) {
       carouselItem.className += " active"
     }
     carouselItem.className += " carouselDiv";
+    let chartSliderDiv = document.createElement("div");
+    chartSliderDiv.id = "chartSliderDiv"+i.toString();
+    chartSliderDiv.className = "carouselDiv";
     carouselInnerDiv.appendChild(carouselItem);
     let chartDiv = document.createElement("div");
     chartDiv.id = "chartDiv"+i.toString();
-    carouselItem.appendChild(chartDiv);
-    const slider = new TimeSlider(carouselItem.id, chartDiv.id, i, VisualizationResponses[i]);
+    carouselItem.appendChild(chartSliderDiv);
+    chartSliderDiv.appendChild(chartDiv);
+    const slider = new TimeSlider(chartSliderDiv.id, chartDiv.id, i, VisualizationResponses[i]);
  }
 }
