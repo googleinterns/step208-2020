@@ -2,6 +2,10 @@ google.charts.load("current", {packages: ['corechart', 'bar', 'geochart']});
 google.charts.setOnLoadCallback(drawChart);
 var allChartData;
 
+$('.carousel').carousel({
+  interval: false,
+});
+
 function getColour(key){
   if (key in allChartData["teamColour"]) return "color: " + allChartData["teamColour"][key];
   return "color: #FFBE7D";
