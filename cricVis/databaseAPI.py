@@ -23,7 +23,7 @@ def getColumnValue(columnValue):
 def getImageName(team):
 	if team in teamImageName:
 		return teamImageName[team]
-	return "cricVis/SRH.png"
+	return "cricVis/IPL.png"
 
 def getTeamName(matchID, team):
 	match = db.reference('/MatchDescription').child(matchID).get()
