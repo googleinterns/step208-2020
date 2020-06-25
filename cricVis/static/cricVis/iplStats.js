@@ -108,6 +108,8 @@ function plotMostSeasonWinsChart(chartData){
 function plotAverageScoreChart(chartData){
   let data = generateChartData(chartData,["Team","Average Score"]);
   let chartOptions = generateOptions("Average Score of IPL Teams","Average Score of every IPL team over all seasons","Team","Average Score");
+  chartOptions["chartArea"] = {"width": 900, "height": 900};
+  chartOptions["pieHole"] = 0.5;
   plotPieChart(data, chartOptions, "averageScore");
 }
 
@@ -161,4 +163,5 @@ function drawChart(){
 
 function receiveData(allIPLData){
   allChartData = allIPLData;
+  console.log(allChartData);
 }
