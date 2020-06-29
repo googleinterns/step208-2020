@@ -32,3 +32,8 @@ def getHeadingNames(columnName):
         headingName += '%s ' % (name.capitalize())
     return headingName
     
+def getPlayerType(tableName):
+    if tableName == "BatsmanStats":
+        return "batting_style"
+    elif tableName == "BowlingStats":
+        return "bowling_style"
