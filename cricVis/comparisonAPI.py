@@ -9,11 +9,11 @@ def getComprisonData(tableName, entityID1, entityID2):
         comparisonData.append(getPlayerData(tableName, entityID1))
         comparisonData.append(getPlayerData(tableName, entityID2))
     return comparisonData
-    
-def getPlayerData(tableName, playerID):
-    playerData = ref.child(tableName).child(playerID).get()
+
+def getPlayerData(tableName, playerName):
+    playerData = ref.child(tableName).child(playerName).get()
     playerDataResponse = {}
-    playerDataResponse["cardData"] = getPlayerCardData(playerData, getPlayerType(tableName))
+    playerDataResponse["cardData"] = getPlayerCardData(playerData, getPlayerType(tableName), playerName)
     playerDataResponse["chartDataT20"] =  getChartData(playerData["T20"])
     playerDataResponse["chartDataODI"] =  getChartData(playerData["ODI"])
     playerDataResponse["chartDataTest"] =  getChartData(playerData["Test"])
@@ -26,9 +26,9 @@ def getTeamData(teamName):
     teamDataResponse["chartData"] = getChartData(teamData)
     return teamDataResponse
 
-def getPlayerCardData(playerData, playerType):
+def getPlayerCardData(playerData, playerType, playerName):
     playerCardData  = {}
-    playerCardData[getHeadingNames("player_name")] = playerData["player_name"]
+    playerCardData[getHeadingNames("player_name")] = playerName
     playerCardData[getHeadingNames("birth_date")] = playerData["birth_date"]
     playerCardData[getHeadingNames(playerType)] = playerData[playerType]
     playerCardData[getHeadingNames("team")] = playerData["team"]
