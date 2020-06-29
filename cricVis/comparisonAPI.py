@@ -1,5 +1,12 @@
 from cricVis.models import *
 
+def getAutofillData():
+    autofillData = {}
+    autofillData["batsmanList"] = getKeyValues("BatsmanStats")
+    autofillData["bowlerList"] = getKeyValues("BowlerStats")
+    autofillData["teamList"] = getKeyValues("TeamWise")
+    return autofillData
+
 def getComprisonData(tableName, entityID1, entityID2):
     comparisonData = []
     if tableName == "TeamWise":
