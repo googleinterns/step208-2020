@@ -4,6 +4,12 @@ def getComprisonData(tableName, entityID1, entityID2):
 
 def getPlayerData(tableName, playerID):
     playerData = ref.child(tableName).child(playerID).get()
+    playerDataResponse = {}
+    playerDataResponse["cardData"] = getPlayerCardData(playerData, getPlayerType(tableName))
+    playerDataResponse["chartDataT20"] =  getChartData(playerData["T20"])
+    playerDataResponse["chartDataODI"] =  getChartData(playerData["ODI"])
+    playerDataResponse["chartDataTest"] =  getChartData(playerData["Test"])
+    return playerData
 
 def getPlayerCardData(playerData, playerType):
     playerCardData  = {}
