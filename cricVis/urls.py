@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^iplStats/$', views.iplStats, name='iplStats'),
     url(r'^timeSeries/$', views.timeSeries, name='timeSeries'),
     url(r'^fetchTimeSeriesData/$', views.fetchTimeSeriesData, name='fetchTimeSeriesData'),
+    url(r'^comparison/$', views.comparison, name='comparison'),
 ]
