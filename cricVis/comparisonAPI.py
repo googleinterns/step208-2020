@@ -11,6 +11,13 @@ def getPlayerData(tableName, playerID):
     playerDataResponse["chartDataTest"] =  getChartData(playerData["Test"])
     return playerData
 
+def getTeamData(teamName):
+    teamData = ref.child(teamName).get()
+    teamDataResponse = {}
+    teamDataResponse["cardData"]["Team Name"] =  teamName
+    teamDataResponse["chartData"] = getChartData(teamData)
+    return teamDataResponse
+
 def getPlayerCardData(playerData, playerType):
     playerCardData  = {}
     playerCardData[getHeadingNames("player_name")] = playerData["player_name"]
