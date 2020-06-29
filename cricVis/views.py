@@ -21,6 +21,9 @@ def iplStats(request):
 def timeSeries(request):
     return render(request,'cricVis/timeSeries.html')
 
+def comparison(request):
+    return render(request, 'cricVis/comparison.html')
+
 """ creates the inningsDetails JSON in the required format """
 
 def getInningsDetails(matchStats,playersDismissed,teamName,chartParameter):
