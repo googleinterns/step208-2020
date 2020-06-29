@@ -59,3 +59,10 @@ def getPlayerType(tableName):
         return "batting_style"
     elif tableName == "BowlingStats":
         return "bowling_style"
+
+def getKeyValues(tableName):
+    tableKeys = ref.child(tableName).get().keys()
+    keyValues = []
+    for key in tableKeys:
+        keyValues.append(key)
+    return keyValues
