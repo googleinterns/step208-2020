@@ -1,7 +1,15 @@
 from cricVis.models import *
 
 def getComprisonData(tableName, entityID1, entityID2):
-
+    comparisonData = []
+    if tableName == "TeamWise":
+        comparisonData.append(getTeamData(entityID1))
+        comparisonData.append(getTeamData(entityID2))
+    else:
+        comparisonData.append(getPlayerData(tableName, entityID1))
+        comparisonData.append(getPlayerData(tableName, entityID2))
+    return comparisonData
+    
 def getPlayerData(tableName, playerID):
     playerData = ref.child(tableName).child(playerID).get()
     playerDataResponse = {}
