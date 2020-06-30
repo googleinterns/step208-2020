@@ -108,3 +108,6 @@ h2,h3,h4{
 .comparisonTableContainer{
     width: 650px;
 }
+.cardDataContainer{
+    display: none;
+}
