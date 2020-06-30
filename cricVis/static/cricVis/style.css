@@ -94,3 +94,10 @@ h2,h3,h4{
     justify-content: space-around;
     width: 500px;
 }
+.comparisonInputContainer{
+    display: flex;
+    height: 350px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
