@@ -23,7 +23,8 @@ def timeSeries(request):
     return render(request,'cricVis/timeSeries.html')
 
 def comparison(request):
-    context = { "autofillData": getAutofillData() }
+    autofillData, tableNameHeadingMap = getAutofillData()
+    context = { "autofillData": json.dumps(autofillData), "tableHeading": json.dumps(tableNameHeadingMap) }
     return render(request, 'cricVis/comparison.html', context)
 
 """ creates the inningsDetails JSON in the required format """
