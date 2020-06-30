@@ -5,6 +5,14 @@ function receiveAutofillData(autofillDataReceived, tableHeadingReceived){
   autofillData = autofillDataReceived;
   tableHeadingData = tableHeadingReceived;
 }
+
+$('.comparisonTableChoice').on('input', function(){
+  const tableName = $("input:radio[name='comparisonTable']:checked").val();
+  console.log(tableName);
+  createAutofill(autofillData[tableName], "autofillFirst", tableHeadingData[tableName]);
+  createAutofill(autofillData[tableName], "autofillSecond", tableHeadingData[tableName]);
+});
+
 function createAutofill(sourceData, inputID, type){
   $(`#${inputID}`).attr('disabled', false);
   $(`#${inputID}`).attr('placeholder', `Enter ${type} name...`);
