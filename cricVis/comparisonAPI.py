@@ -2,10 +2,11 @@ from cricVis.models import *
 
 def getAutofillData():
     autofillData = {}
-    autofillData["batsmanList"] = getKeyValues("BatsmanStats")
-    autofillData["bowlerList"] = getKeyValues("BowlerStats")
-    autofillData["teamList"] = getKeyValues("TeamWise")
-    return autofillData
+    autofillData["BatsmanStats"] = getKeyValues("BatsmanStats")
+    autofillData["BowlerStats"] = getKeyValues("BowlerStats")
+    autofillData["TeamWise"] = getKeyValues("TeamWise")
+    tableNameHeadingMap = {"BatsmanStats": "Batsman", "BowlerStats": "Bowler", "TeamWise": "Team"}
+    return autofillData, tableNameHeadingMap
 
 def getComprisonData(tableName, entityID1, entityID2):
     comparisonData = []
