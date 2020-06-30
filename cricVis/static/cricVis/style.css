@@ -89,3 +89,8 @@ h2,h3,h4{
     margin-bottom: 40px;
     visibility: hidden;
 }
+.autofillFieldsContainer{
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+}
