@@ -44,33 +44,37 @@
             </div>
           </nav>
         </div>
-        <div class="fieldContainer">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input comparisonTableChoice" id="BatsmanStats" value="BatsmanStats" name="comparisonTable">
-            <label class="custom-control-label" for="BatsmanStats">Batsman v/s Batsman</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input comparisonTableChoice" id="BowlerStats" value="BowlerStats" name="comparisonTable">
-            <label class="custom-control-label" for="BowlerStats">Bowler v/s Bowler</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input comparisonTableChoice" id="TeamWise" value="TeamWise" name="comparisonTable">
-            <label class="custom-control-label" for="TeamWise">IPL Team v/s IPL Team</label>
-          </div>
-        </div>
-        <div class="autofillFieldsContainer">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text"><i class="fa fa-search"></i></div>
+        <div class = "comparisonInputContainer">
+          <h3>Choose the type of comparison</h3>
+          <div class="fieldContainer">
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input comparisonTableChoice" id="BatsmanStats" value="BatsmanStats" name="comparisonTable">
+              <label class="custom-control-label" for="BatsmanStats">Batsman v/s Batsman</label>
             </div>
-            <input type="text" class="form-control" id="autofillFirst" disabled>
-          </div>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text"><i class="fa fa-search"></i></div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input comparisonTableChoice" id="BowlerStats" value="BowlerStats" name="comparisonTable">
+              <label class="custom-control-label" for="BowlerStats">Bowler v/s Bowler</label>
             </div>
-            <input type="text" class="form-control" id="autofillSecond" disabled>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input comparisonTableChoice" id="TeamWise" value="TeamWise" name="comparisonTable">
+              <label class="custom-control-label" for="TeamWise">IPL Team v/s IPL Team</label>
+            </div>
           </div>
+          <div class="autofillFieldsContainer">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-search"></i></div>
+              </div>
+              <input type="text" class="form-control" id="autofillFirst" disabled>
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-search"></i></div>
+              </div>
+              <input type="text" class="form-control" id="autofillSecond" disabled>
+            </div>
+          </div>
+          <button type="button" class="btn btn-outline-primary" id="fetchComparisonData">Submit</button>
         </div>
       </div>
     </div>
