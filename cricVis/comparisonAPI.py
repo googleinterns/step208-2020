@@ -11,8 +11,8 @@ def getAutofillData():
 def getComprisonData(tableName, entityID1, entityID2):
     comparisonData = []
     if tableName == "TeamWise":
-        comparisonData.append(getTeamData(entityID1))
-        comparisonData.append(getTeamData(entityID2))
+        comparisonData.append(getTeamData(tableName, entityID1))
+        comparisonData.append(getTeamData(tableName, entityID2))
     else:
         comparisonData.append(getPlayerData(tableName, entityID1))
         comparisonData.append(getPlayerData(tableName, entityID2))
@@ -25,12 +25,12 @@ def getPlayerData(tableName, playerName):
     playerDataResponse["chartDataT20"] =  getChartData(playerData["T20"])
     playerDataResponse["chartDataODI"] =  getChartData(playerData["ODI"])
     playerDataResponse["chartDataTest"] =  getChartData(playerData["Test"])
-    return playerData
+    return playerDataResponse
 
-def getTeamData(teamName):
-    teamData = ref.child(teamName).get()
+def getTeamData(tableName, teamName):
+    teamData = ref.child(tableName).child(teamName).get()
     teamDataResponse = {}
-    teamDataResponse["cardData"]["Team Name"] =  teamName
+    teamDataResponse["cardData"] =  { "Team Name": teamName }
     teamDataResponse["chartData"] = getChartData(teamData)
     return teamDataResponse
 
