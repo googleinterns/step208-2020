@@ -79,5 +79,6 @@
 <script src="{% static 'cricVis/comparison.js' %}"></script>
 <script>
   const autofillDataReceived = '{{ autofillData | escapejs }}';
-  receiveAutofillData(JSON.parse(autofillDataReceived));
+  const tableHeadingReceived = '{{ tableHeading | escapejs }}';
+  receiveAutofillData(JSON.parse(autofillDataReceived), JSON.parse(tableHeadingReceived));
 </script>
