@@ -75,3 +75,8 @@
     </div>
   </body>
 </html>
+<script src="{% static 'cricVis/comparison.js' %}"></script>
+<script>
+  const autofillDataReceived = '{{ autofillData | escapejs }}';
+  receiveAutofillData(JSON.parse(autofillDataReceived));
+</script>
