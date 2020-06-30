@@ -1,6 +1,9 @@
 var autofillData;
-function receiveAutofillData(data){
-  autofillData = data;
+var tableHeadingData;
+function receiveAutofillData(autofillDataReceived, tableHeadingReceived){
+  console.log(tableHeadingReceived);
+  autofillData = autofillDataReceived;
+  tableHeadingData = tableHeadingReceived;
 }
 function createAutofill(sourceData, inputID, type){
   $(`#${inputID}`).attr('disabled', false);
