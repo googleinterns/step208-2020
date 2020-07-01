@@ -79,6 +79,7 @@ h2,h3,h4{
 #carouselContainer{
     padding: 20px;
     min-width: 900px;
+    height: 670px;
 }
 .carouselDiv{
     display: flex;
@@ -88,6 +89,8 @@ h2,h3,h4{
 #timeSeriesCarousel{
     margin-bottom: 40px;
     visibility: hidden;
+    width: 900px;
+    height: 670px;
 }
 .autofillFieldsContainer{
     display: flex;

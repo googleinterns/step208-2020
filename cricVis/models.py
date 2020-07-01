@@ -2,7 +2,7 @@ from django.db import models
 from firebase_admin import credentials, initialize_app, db
 # Create your models here.
 teamImageName = {
-    "Sunrisers Hyderbad": "cricVis/SRH.png",
+    "Sunrisers Hyderabad": "cricVis/SRH.png",
     "Mumbai Indians":"cricVis/MI.png",
     "Gujarat Lions":"cricVis/GL.png",
     "Rising Pune Supergiant":"cricVis/RPS.png",

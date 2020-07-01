@@ -8,6 +8,18 @@ function getSelectedCheckboxValues(checkboxGroupName){
   return selectedValues;
 }
 
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
+
+function createErrorNotification(){
+  const notification = document.createElement("div");
+  notification.className = "alert alert-warning";
+  notification.setAttribute("role","alert");
+  notification.innerText = "Data for this request doesn't exist. We apologize for the inconvenience";
+  return notification;
+}
+
 /* create a visualization request for every individual option selected 
 and return a set of requests */
 
@@ -76,7 +88,6 @@ $('.carousel').carousel({
 // send an AJAX GET to get a set of responses corresponding to the set of requests
 
 $('#fetchTimeSeriesDataButton').click(function(){
-  console.log("entered");
   const startDate = $('#startDate').val();
   const endDate = $('#endDate').val();
   const batsmanFields = getSelectedCheckboxValues('Batsman');
@@ -103,6 +114,7 @@ $('#fetchTimeSeriesDataButton').click(function(){
 function addCarousel(VisualizationResponses) {
   document.getElementById("timeSeriesCarousel").style.visibility = 'visible';
   let carouselInnerDiv = document.getElementById('carouselContainer');
+  $('#carouselContainer').empty();
   for (var i = 0; i < VisualizationResponses.length; i++) {
     let carouselItem = document.createElement("div");
     carouselItem.className = "carousel-item";
@@ -119,6 +131,11 @@ function addCarousel(VisualizationResponses) {
     chartDiv.id = "chartDiv"+i.toString();
     carouselItem.appendChild(chartSliderDiv);
     chartSliderDiv.appendChild(chartDiv);
-    const slider = new TimeSlider(chartSliderDiv.id, chartDiv.id, i, VisualizationResponses[i]);
+    if (isEmpty(VisualizationResponses[i]["chartDataResponse"])){
+      chartSliderDiv.appendChild(createErrorNotification());
+    }
+    else{
+      const slider = new TimeSlider(chartSliderDiv.id, chartDiv.id, i, VisualizationResponses[i]);
+    }
  }
 }
