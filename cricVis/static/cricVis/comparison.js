@@ -21,3 +21,10 @@ function createAutofill(sourceData, inputID, type){
     source: sourceData
  });
 }
+
+function createHTMLElement(type, elementClass=null, elementID=null){
+  const element = document.createElement(type);
+  if (elementID) element.id = elementID;
+  if (elementClass) element.className = elementClass;
+  return element;
+}
