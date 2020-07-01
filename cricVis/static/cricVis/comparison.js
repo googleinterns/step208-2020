@@ -50,6 +50,15 @@ function createHTMLElement(type, elementClass=null, elementID=null){
   return element;
 }
 
+function createComparisonHeadings(headingContainerID, heading1, heading2){
+  const heading1Element = createHTMLElement("h3");
+  const heading2Element = createHTMLElement("h3");
+  heading1Element.innerText = heading1;
+  heading2Element.innerText = heading2;
+  document.getElementById(headingContainerID).appendChild(heading1Element);
+  document.getElementById(headingContainerID).appendChild(heading2Element);
+}
+
 function createStatsTable(statsDivID, statsData1, statsData2){
   const statsDiv = document.getElementById(statsDivID);
   let idCounter = 0;
