@@ -6,15 +6,21 @@ from howsThat.celery import app
 @app.task(trail=True)
 def getVisualizationResponse(visualizationRequest):
     visualizationResponse = {}
+    visualizationResponse["chartDataResponse"], realStartDate, realEndDate = getChartDataResponse(
+        visualizationRequest["metaDataRequest"], 
+        visualizationRequest["startDate"], 
+        visualizationRequest["endDate"],
+        visualizationRequest["field"]
+        )
     visualizationResponse["metaDataResponse"] = getMetaDataResponse(
         visualizationRequest["metaDataRequest"]["playerType"],
         visualizationRequest["metaDataRequest"]["gameFormat"],
         visualizationRequest["metaDataRequest"]["gender"],
         visualizationRequest["field"],
-        visualizationRequest["startDate"],
-        visualizationRequest["endDate"]
+        realStartDate,
+        realEndDate
         )
-    visualizationResponse["chartDataResponse"] = getChartDataResponse(visualizationRequest)
+
     return visualizationResponse
 
 """ get the table name to fetch the data from using the player, match and gender type"""
@@ -43,11 +49,14 @@ def getMetaDataResponse(playerType, gameFormat, gender, field, startDate, endDat
 
 """ get chart data response: year wise data  {year: {xAxisValue: yAxisValue, ...}, ...}"""
 
-def getChartDataResponse(visualizationRequest):
-    tableName = getTableName(visualizationRequest["metaDataRequest"])
-    years = getYearsInRange(visualizationRequest["startDate"], visualizationRequest["endDate"], tableName)
+def getChartDataResponse(metaDataRequest, startDate, endDate, field):
+    tableName = getTableName(metaDataRequest)
+    years = getYearsInRange(startDate, endDate, tableName)
     chartDataResponse = {}
+    dateList = []
     for year in years:
-        yearResponse = getTopScoresForAYear(tableName, year, visualizationRequest["field"])
-        chartDataResponse[year] = yearResponse
-    return chartDataResponse
+        dateList.append(year)
+        yearResponse = getTopScoresForAYear(tableName, year, field)
+        if (yearResponse):
+            chartDataResponse[year] = yearResponse
+    return chartDataResponse, min(dateList), max(dateList)
