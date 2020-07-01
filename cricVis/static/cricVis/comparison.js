@@ -13,6 +13,27 @@ $('.comparisonTableChoice').on('input', function(){
   createAutofill(autofillData[tableName], "autofillSecond", tableHeadingData[tableName]);
 });
 
+$('#fetchComparisonData').click(function(){
+  const entityID1 = $("#autofillFirst").val();
+  const entityID2 = $("#autofillSecond").val();
+  const tableName = $("input:radio[name='comparisonTable']:checked").val();
+  $.ajax({
+    type: 'GET',
+    url: '/cricVis/fetchComparisonData',
+    data: {
+      entityID1: entityID1,
+      entityID2: entityID2,
+      tableName: tableName,
+    },
+    success: function(comparisonData){
+      console.log(JSON.parse(comparisonData));
+    },
+    error: function(error){
+      console.log(error);
+    }
+  });
+});
+
 function createAutofill(sourceData, inputID, type){
   $(`#${inputID}`).attr('disabled', false);
   $(`#${inputID}`).attr('placeholder', `Enter ${type} name...`);
