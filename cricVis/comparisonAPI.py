@@ -53,7 +53,7 @@ def getHeadingNames(columnName):
     headingName = ""
     for name in columnNameList:
         headingName += '%s ' % (name.capitalize())
-    return headingName
+    return headingName.strip()
     
 def getPlayerType(tableName):
     if tableName == "BatsmanStats":
