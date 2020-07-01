@@ -59,4 +59,6 @@ def getChartDataResponse(metaDataRequest, startDate, endDate, field):
         yearResponse = getTopScoresForAYear(tableName, year, field)
         if (yearResponse):
             chartDataResponse[year] = yearResponse
-    return chartDataResponse, min(dateList), max(dateList)
+    if (len(dateList)>0):
+        return chartDataResponse, min(dateList), max(dateList)
+    return chartDataResponse, "not defined", "not defined"
