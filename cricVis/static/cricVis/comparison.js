@@ -50,6 +50,17 @@ function createHTMLElement(type, elementClass=null, elementID=null){
   return element;
 }
 
+function createComparisonUIPlayers(player1Data, player2Data){
+  createCardForItem("firstEntityHeader", "firstEntityBody", player1Data["cardData"]);
+  createCardForItem("secondEntityHeader", "secondEntityBody", player2Data["cardData"]);
+  createComparisonHeadings("T20HeadingContainer", player1Data["cardData"]["Player Name"], player2Data["cardData"]["Player Name"]);
+  createComparisonHeadings("ODIHeadingContainer", player1Data["cardData"]["Player Name"], player2Data["cardData"]["Player Name"]);
+  createComparisonHeadings("TestHeadingContainer", player1Data["cardData"]["Player Name"], player2Data["cardData"]["Player Name"]);
+  createStatsTable("T20ComparisonStats", player1Data["chartDataT20"], player2Data["chartDataT20"]);
+  createStatsTable("ODIComparisonStats", player1Data["chartDataODI"], player2Data["chartDataODI"]);
+  createStatsTable("TestComparisonStats", player1Data["chartDataTest"], player2Data["chartDataTest"]);
+}
+
 function createCardForItem(cardHeaderID, cardBodyID, cardData){
   Object.keys(cardData).forEach((key) => {
     if (key  === "Player Name"){
