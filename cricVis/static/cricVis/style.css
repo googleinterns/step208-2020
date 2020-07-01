@@ -113,7 +113,13 @@ h2,h3,h4{
 }
 #cardDataContainer{
     visibility: hidden;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
 #comparisonPlayerContainer{
     visibility: hidden;
+}
+.playerCardContainer{
+    width: 300px;
 }
