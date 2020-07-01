@@ -21,3 +21,38 @@ function createAutofill(sourceData, inputID, type){
     source: sourceData
  });
 }
+
+function createHTMLElement(type, elementClass=null, elementID=null){
+  const element = document.createElement(type);
+  if (elementID) element.id = elementID;
+  if (elementClass) element.className = elementClass;
+  return element;
+}
+
+function createStatsTable(statsDivID, statsData1, statsData2){
+  const statsDiv = document.getElementById(statsDivID);
+  let idCounter = 0;
+  Object.keys(statsData1).forEach((key) => {
+    const tableRow = createStatDiv(`comparisonChartDiv${idCounter}`, key, statsData1[key], statsData2[key]);
+    statsDiv.appendChild(tableRow);
+    idCounter ++;
+  });
+}
+
+function createStatDiv(chartDivID, field, fieldValue1, fieldValue2){
+  const parentDiv = createHTMLElement("div", "list-group-item list-group-item-action flex-column align-items-center");
+  const chartStatsDiv = createHTMLElement("div", "d-flex w-100 justify-content-around");
+  const chartDiv = createHTMLElement("div", "comparisonChartDiv", chartDivID);
+  const stat1 = createHTMLElement("p", "statTag");
+  const stat2 = createHTMLElement("p", "statTag");
+  stat1.innerText = fieldValue1;
+  stat2.innerText = fieldValue2;
+  const chartStatsDivHeading = createHTMLElement("h4", "chartStatsDivHeading");
+  chartStatsDivHeading.innerText = field;
+  chartStatsDiv.appendChild(stat1);
+  chartStatsDiv.appendChild(chartDiv);
+  chartStatsDiv.appendChild(stat2);
+  parentDiv.appendChild(chartStatsDivHeading);
+  parentDiv.appendChild(chartStatsDiv);
+  return parentDiv;
+}
