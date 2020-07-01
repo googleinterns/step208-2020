@@ -26,7 +26,7 @@ $('#fetchComparisonData').click(function(){
       tableName: tableName,
     },
     success: function(comparisonData){
-      console.log(JSON.parse(comparisonData));
+      createComparisonUI(tableName, JSON.parse(comparisonData));
     },
     error: function(error){
       console.log(error);
@@ -48,6 +48,15 @@ function createHTMLElement(type, elementClass=null, elementID=null){
   if (elementID) element.id = elementID;
   if (elementClass) element.className = elementClass;
   return element;
+}
+
+function createComparisonUI(tableName, comparisonData){
+  if (tableName == "TeamWise"){
+    createComparisonUITeams(comparisonData[0], comparisonData[1]);
+  }
+  else{
+    createComparisonUIPlayers(comparisonData[0], comparisonData[1]);
+  }
 }
 
 function createComparisonUIPlayers(player1Data, player2Data){
@@ -115,5 +124,10 @@ function createStatDiv(chartDivID, field, fieldValue1, fieldValue2){
   chartStatsDiv.appendChild(stat2);
   parentDiv.appendChild(chartStatsDivHeading);
   parentDiv.appendChild(chartStatsDiv);
+  createComparisonChart(field, fieldValue1, fieldValue2);
   return parentDiv;
+}
+
+function createComparisonChart(field, fieldValue1, fieldValue2){
+
 }
