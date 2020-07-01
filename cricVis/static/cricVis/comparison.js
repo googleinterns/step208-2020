@@ -29,6 +29,16 @@ function createHTMLElement(type, elementClass=null, elementID=null){
   return element;
 }
 
+function createStatsTable(statsDivID, statsData1, statsData2){
+  const statsDiv = document.getElementById(statsDivID);
+  let idCounter = 0;
+  Object.keys(statsData1).forEach((key) => {
+    const tableRow = createStatDiv(`comparisonChartDiv${idCounter}`, key, statsData1[key], statsData2[key]);
+    statsDiv.appendChild(tableRow);
+    idCounter ++;
+  });
+}
+
 function createStatDiv(chartDivID, field, fieldValue1, fieldValue2){
   const parentDiv = createHTMLElement("div", "list-group-item list-group-item-action flex-column align-items-center");
   const chartStatsDiv = createHTMLElement("div", "d-flex w-100 justify-content-around");
