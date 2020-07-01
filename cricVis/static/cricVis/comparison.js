@@ -115,8 +115,8 @@ function createStatsTable(statsDivID, statsData1, statsData2){
 }
 
 function createStatDiv(chartDivID, field, fieldValue1, fieldValue2){
-  const parentDiv = createHTMLElement("div", "list-group-item list-group-item-action flex-column align-items-center");
-  const chartStatsDiv = createHTMLElement("div", "d-flex w-100 justify-content-around");
+  const parentDiv = createHTMLElement("div", "list-group-item list-group-item-action flex-column align-items-center chartStatsContainer");
+  const chartStatsDiv = createHTMLElement("div", "d-flex w-100 justify-content-between");
   const chartDiv = createHTMLElement("div", "comparisonChartDiv", chartDivID);
   const stat1 = createHTMLElement("p", "statTag");
   const stat2 = createHTMLElement("p", "statTag");
