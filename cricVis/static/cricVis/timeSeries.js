@@ -8,6 +8,10 @@ function getSelectedCheckboxValues(checkboxGroupName){
   return selectedValues;
 }
 
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
+
 /* create a visualization request for every individual option selected 
 and return a set of requests */
 
@@ -76,7 +80,6 @@ $('.carousel').carousel({
 // send an AJAX GET to get a set of responses corresponding to the set of requests
 
 $('#fetchTimeSeriesDataButton').click(function(){
-  console.log("entered");
   const startDate = $('#startDate').val();
   const endDate = $('#endDate').val();
   const batsmanFields = getSelectedCheckboxValues('Batsman');
@@ -119,6 +122,11 @@ function addCarousel(VisualizationResponses) {
     chartDiv.id = "chartDiv"+i.toString();
     carouselItem.appendChild(chartSliderDiv);
     chartSliderDiv.appendChild(chartDiv);
-    const slider = new TimeSlider(chartSliderDiv.id, chartDiv.id, i, VisualizationResponses[i]);
+    if (isEmpty(VisualizationResponses[i]["chartDataResponse"])){
+      console.log("unavailable data");
+    }
+    else{
+      const slider = new TimeSlider(chartSliderDiv.id, chartDiv.id, i, VisualizationResponses[i]);
+    }
  }
 }
