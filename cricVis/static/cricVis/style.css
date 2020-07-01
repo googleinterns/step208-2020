@@ -111,9 +111,42 @@ h2,h3,h4{
 .comparisonTableContainer{
     width: 650px;
 }
+.comparisonHeadingContainer{
+    display: flex;
+    justify-content: space-between;
+}
 #cardDataContainer{
     visibility: hidden;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
 #comparisonPlayerContainer{
     visibility: hidden;
+}
+.playerCardContainer{
+    width: 300px;
+}
+.chartStatsDivHeading{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+.chartStatsContainer{
+    height: 175px;
+}
+.statTag{
+    font-size: 25px;
+    font-weight: 800;
+}
+.cardHeading{
+    font-size: 20px;
+}
+.matchTypeTabs{
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}
+#T20Container, #ODIContainer, #TestContainer, #TeamComparisonContainer{
+    width: 1000px;
 }
