@@ -12,6 +12,14 @@ function isEmpty(obj) {
   return Object.keys(obj).length === 0;
 }
 
+function createErrorNotification(){
+  const notification = document.createElement("div");
+  notification.className = "alert alert-warning";
+  notification.setAttribute("role","alert");
+  notification.innerText = "Data for this request doesn't exist. We apologize for the inconvenience";
+  return notification;
+}
+
 /* create a visualization request for every individual option selected 
 and return a set of requests */
 
@@ -123,7 +131,7 @@ function addCarousel(VisualizationResponses) {
     carouselItem.appendChild(chartSliderDiv);
     chartSliderDiv.appendChild(chartDiv);
     if (isEmpty(VisualizationResponses[i]["chartDataResponse"])){
-      console.log("unavailable data");
+      chartSliderDiv.appendChild(createErrorNotification());
     }
     else{
       const slider = new TimeSlider(chartSliderDiv.id, chartDiv.id, i, VisualizationResponses[i]);
