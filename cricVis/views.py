@@ -90,3 +90,11 @@ def fetchTimeSeriesData(request):
             for i in collectedResponse:
                 visualizationResponses.append(i[1])
         return HttpResponse(json.dumps(visualizationResponses))
+        
+def fetchComparisonData(request):
+    if request.method == "GET":
+        entityID1 = request.GET['entityID1']
+        entityID2 = request.GET['entityID2']
+        tableName = request.GET['tableName']
+        comparisonData = getComprisonData(tableName, entityID1, entityID2)
+        return HttpResponse(json.dumps(comparisonData))
