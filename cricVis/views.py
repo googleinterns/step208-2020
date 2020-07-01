@@ -4,6 +4,7 @@ import json
 from cricVis.databaseAPI import *
 from cricVis.iplStatsDataAPI import *
 from cricVis.timeSeriesAPI import *
+from cricVis.comparisonAPI import *
 # Create your views here.
 
 """ sent a GET request to get match_ID, team1, team2, match date """
@@ -22,7 +23,9 @@ def timeSeries(request):
     return render(request,'cricVis/timeSeries.html')
 
 def comparison(request):
-    return render(request, 'cricVis/comparison.html')
+    autofillData, tableNameHeadingMap = getAutofillData()
+    context = { "autofillData": json.dumps(autofillData), "tableHeading": json.dumps(tableNameHeadingMap) }
+    return render(request, 'cricVis/comparison.html', context)
 
 """ creates the inningsDetails JSON in the required format """
 
