@@ -50,6 +50,19 @@ function createHTMLElement(type, elementClass=null, elementID=null){
   return element;
 }
 
+function createCardForItem(cardHeaderID, cardBodyID, cardData){
+  Object.keys(cardData).forEach((key) => {
+    if (key  === "Player Name"){
+      document.getElementById(cardHeaderID).innerText = cardData[key];
+    }
+    else{
+      const dataTag = createHTMLElement("p", "card-text");
+      dataTag.innerText = `${key} : ${cardData[key]}`;
+      document.getElementById(cardBodyID).appendChild(dataTag);
+    }
+  });
+}
+
 function createComparisonHeadings(headingContainerID, heading1, heading2){
   const heading1Element = createHTMLElement("h3");
   const heading2Element = createHTMLElement("h3");
