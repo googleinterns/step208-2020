@@ -114,6 +114,7 @@ $('#fetchTimeSeriesDataButton').click(function(){
 function addCarousel(VisualizationResponses) {
   document.getElementById("timeSeriesCarousel").style.visibility = 'visible';
   let carouselInnerDiv = document.getElementById('carouselContainer');
+  $('#carouselContainer').empty();
   for (var i = 0; i < VisualizationResponses.length; i++) {
     let carouselItem = document.createElement("div");
     carouselItem.className = "carousel-item";
