@@ -78,7 +78,8 @@ def addStatsToInnings(innings):
 which will be list of {matchID:, matchDate:, team1:,team2:} """
 
 def getAllData():
-	allData = []
+	allDataSeasonWise = {}
+	allDataSeasonWiseList = []
 	allMatches = ref.child("MatchDescription").get()
 	counter=1
 	for matchID in allMatches:
@@ -91,8 +92,14 @@ def getAllData():
 		matchData["team1_image"] = getImageName(matchData["team1"])
 		matchData["team2_image"] = getImageName(matchData["team2"])
 		matchData["matchDate"] = match["matchDate"]
-		allData.append(matchData)
-	return allData
+		if match["season"] in allDataSeasonWise:
+			allDataSeasonWise[match["season"]].append(matchData)
+		else:
+			allDataSeasonWise[match["season"]] = [matchData]
+	for season in allDataSeasonWise:
+		allDataSeasonWiseList.append({ "seasonName": "Season%s" %season, "seasonID": "#Season%s" %season, "match": allDataSeasonWise[season]})
+	allDataSeasonWiseList = sorted(allDataSeasonWiseList, key = lambda x : x["seasonName"])
+	return allDataSeasonWiseList
 
 """ gets the match statistics for batting: for an over, the runs scored
 and breakdown of runs for each team """
@@ -172,4 +179,5 @@ def getMatchDetails(matchID):
 	matchDetails["matchID"] = getColumnValue(matchID)
 	for detail in match:
 		matchDetails[detail] = match[detail]
+	print(matchDetails)
 	return matchDetails
