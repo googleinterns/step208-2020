@@ -14,7 +14,7 @@
 }
 .match-group{
     width: 600px;
-    height: 400px;
+    height: 490px;
     overflow: auto;
 }
 .content{
@@ -149,4 +149,11 @@ h2,h3,h4{
 }
 #T20Container, #ODIContainer, #TestContainer, #TeamComparisonContainer{
     width: 1000px;
+}
+.seasonMatchContainer{
+    margin-top: 20px;
+    width: 1000px;
+}
+.seasonContainer{
+    text-align: center;
 }

@@ -53,19 +53,59 @@
             <button type="submit" class="btn btn-secondary">Log Out</button>
           </div>
         </form>
-        <div class="list-group match-group match-container">
-          {% for match in allMatches %}
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-              <div class="d-flex w-100 justify-content-around match" data-value={{ match.matchID }}>
-                <img src="{% static match.team1_image %}" alt="srh" width="30" height="30">
-                <h5 class="mb-1"> {{ match.team1 }} v/s {{ match.team2 }}</h5>
-                <img src="{% static match.team2_image %}" alt="srh" width="30" height="30">
-              </div>
-              <div class="d-flex w-100 justify-content-center">
-                <small class="text-muted"> {{ match.matchDate }} </small>
-              </div>
-            </a>
-          {% endfor %}
+        <div class="row" class="seasonMatchContainer">
+          <div class="col-4 seasonContainer">
+            <div class="list-group" id="list-tab" role="tablist">
+              {% for season in allMatches %}
+                {% if forloop.counter == 1 %}
+                  <a class="list-group-item list-group-item-action active" data-toggle="list" href={{ season.seasonID }} role="tab">{{ season.seasonName }}</a>
+                {% else %}
+                  <a class="list-group-item list-group-item-action" data-toggle="list" href={{ season.seasonID }} role="tab">{{ season.seasonName }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+              {% for season in allMatches %}
+                {% if forloop.counter == 1 %}
+                  <div class="tab-pane fade show active" id={{ season.seasonName }} role="tabpanel">
+                    <div class="list-group match-group match-container">
+                      {% for match in season.match %}
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                          <div class="d-flex w-100 justify-content-around match" data-value={{ match.matchID }}>
+                            <img src="{% static match.team1_image %}" alt="srh" width="30" height="30">
+                            <h5 class="mb-1"> {{ match.team1 }} v/s {{ match.team2 }}</h5>
+                            <img src="{% static match.team2_image %}" alt="srh" width="30" height="30">
+                          </div>
+                          <div class="d-flex w-100 justify-content-center">
+                            <small class="text-muted"> {{ match.matchDate }} </small>
+                          </div>
+                        </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="tab-pane fade" id={{ season.seasonName }} role="tabpanel">
+                    <div class="list-group match-group match-container">
+                      {% for match in season.match %}
+                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                          <div class="d-flex w-100 justify-content-around match" data-value={{ match.matchID }}>
+                            <img src="{% static match.team1_image %}" alt="srh" width="30" height="30">
+                            <h5 class="mb-1"> {{ match.team1 }} v/s {{ match.team2 }}</h5>
+                            <img src="{% static match.team2_image %}" alt="srh" width="30" height="30">
+                          </div>
+                          <div class="d-flex w-100 justify-content-center">
+                            <small class="text-muted"> {{ match.matchDate }} </small>
+                          </div>
+                        </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
         </div>
         <div id="toggleChartsBar" class="container-div">
           <ul class="nav nav-tabs">
