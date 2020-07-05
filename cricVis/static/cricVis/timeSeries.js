@@ -112,16 +112,19 @@ $('#fetchTimeSeriesDataButton').click(function(){
   });
 });
 function addCarousel(VisualizationResponses) {
-  document.getElementById("timeSeriesCarousel").style.visibility = 'visible';
+  // document.getElementById("timeSeriesCarousel").style.visibility = 'visible';
   let carouselInnerDiv = document.getElementById('carouselContainer');
   $('#carouselContainer').empty();
+  let carouselDivList = [];
   for (var i = 0; i < VisualizationResponses.length; i++) {
     let carouselItem = document.createElement("div");
     carouselItem.className = "carousel-item";
     carouselItem.id = "carouselDiv"+i.toString();
     if (i==0) {
-      carouselItem.className += " active"
+    carouselItem.classList.add("active");// += " active"
     }
+    carouselItem.style.display = "block";
+    // carouselItem.classList.add("carouselChartDiv");
     carouselItem.className += " carouselDiv";
     let chartSliderDiv = document.createElement("div");
     chartSliderDiv.id = "chartSliderDiv"+i.toString();
@@ -129,13 +132,24 @@ function addCarousel(VisualizationResponses) {
     carouselInnerDiv.appendChild(carouselItem);
     let chartDiv = document.createElement("div");
     chartDiv.id = "chartDiv"+i.toString();
+    // chartDiv.classList.add("carouselChartDiv");
+    // chartDiv.style.height = 600;
+    // chartDiv.style.width = 800;
+    chartDiv.innerHTML = "usvbjknsvnksv";
     carouselItem.appendChild(chartSliderDiv);
     chartSliderDiv.appendChild(chartDiv);
+    carouselDivList.push(carouselItem);
     if (isEmpty(VisualizationResponses[i]["chartDataResponse"])){
       chartSliderDiv.appendChild(createErrorNotification());
     }
     else{
-      const slider = new TimeSlider(chartSliderDiv.id, chartDiv.id, i, VisualizationResponses[i]);
+      const slider = new TimeSlider(chartSliderDiv.id, chartDiv.id, i, VisualizationResponses[i], carouselItem);
     }
  }
+//  for (var i = 0; i < VisualizationResponses.length; i++) {
+//    if (i === 0 ){
+//      continue;
+//    }
+//    carouselDivList[i].classList.remove("active");
+//  }
 }

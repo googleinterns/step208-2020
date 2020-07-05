@@ -88,7 +88,7 @@ h2,h3,h4{
 }
 #timeSeriesCarousel{
     margin-bottom: 40px;
-    visibility: hidden;
+    /* visibility: hidden; */
     width: 900px;
     height: 670px;
 }
@@ -156,4 +156,8 @@ h2,h3,h4{
 }
 .seasonContainer{
     text-align: center;
+}
+.carouselChartDiv{
+    height: 630px;
+    width: 860px;
 }
