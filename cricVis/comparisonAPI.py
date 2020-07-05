@@ -1,4 +1,4 @@
-from cricVis.models import *
+from cricVis.comparisonDatabase import *
 
 def getAutofillData():
     autofillData = {}
@@ -54,7 +54,7 @@ def getHeadingNames(columnName):
     for name in columnNameList:
         headingName += '%s ' % (name.capitalize())
     return headingName.strip()
-    
+
 def getPlayerType(tableName):
     if tableName == "BatsmanStats":
         return "batting_style"
