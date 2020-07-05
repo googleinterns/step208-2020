@@ -5,4 +5,4 @@ comparisonDB = initialize_app(cred, {
 	'databaseURL' : 'https://playercomparison-6dde2.firebaseio.com/',
 },name="comparisonDB")
 
-ref = db.reference('/',comparisonDB)
+refComparison = db.reference('/',comparisonDB)

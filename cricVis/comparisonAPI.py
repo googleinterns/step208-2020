@@ -1,10 +1,11 @@
 from cricVis.comparisonDatabase import *
+from cricVis.models import *
 
 def getAutofillData():
     autofillData = {}
-    autofillData["BatsmanStats"] = getKeyValues("BatsmanStats")
-    autofillData["BowlerStats"] = getKeyValues("BowlerStats")
-    autofillData["TeamWise"] = getKeyValues("TeamWise")
+    autofillData["BatsmanStats"] = getKeyValues("BatsmanStats", refComparison)
+    autofillData["BowlerStats"] = getKeyValues("BowlerStats", refComparison)
+    autofillData["TeamWise"] = getKeyValues("TeamWise", ref)
     tableNameHeadingMap = {"BatsmanStats": "Batsman", "BowlerStats": "Bowler", "TeamWise": "Team"}
     return autofillData, tableNameHeadingMap
 
@@ -19,7 +20,7 @@ def getComprisonData(tableName, entityID1, entityID2):
     return comparisonData
 
 def getPlayerData(tableName, playerName):
-    playerData = ref.child(tableName).child(playerName).get()
+    playerData = refComparison.child(tableName).child(playerName).get()
     playerDataResponse = {}
     playerDataResponse["cardData"] = getPlayerCardData(playerData, getPlayerType(tableName), playerName)
     playerDataResponse["chartDataT20"] =  getChartData(playerData["T20"])
@@ -61,8 +62,8 @@ def getPlayerType(tableName):
     elif tableName == "BowlingStats":
         return "bowling_style"
 
-def getKeyValues(tableName):
-    tableKeys = ref.child(tableName).get().keys()
+def getKeyValues(tableName, reference):
+    tableKeys = reference.child(tableName).get().keys()
     keyValues = []
     for key in tableKeys:
         keyValues.append(key)
