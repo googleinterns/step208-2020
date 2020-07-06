@@ -6,16 +6,20 @@ $('.carousel').carousel({
   interval: false,
 });
 
+// get the colour of bar corresponding to the team
+
 function getColour(key){
   if (key in allChartData["teamColour"]) return "color: " + allChartData["teamColour"][key];
   return "color: #FFBE7D";
 }
 
+// convert the chart data to matrix for Google Charts API format
+
 function convertDataToMatrix(data,headers, color=null){
   let matrixData = []
   headers.push({ role: "style" });
   matrixData.push(headers);
-  for (let xAxis in data){
+  Object.keys(data).forEach((xAxis) => {
     if (typeof(data[xAxis]) === "object"){
       const key = Object.keys(data[xAxis]);
       if (!color) colour = getColour(key[0]);
@@ -25,15 +29,19 @@ function convertDataToMatrix(data,headers, color=null){
       if (!color) colour = getColour(xAxis);
       matrixData.push([xAxis, data[xAxis], colour]);
     }
-  }
+  });
   return matrixData;
 }
+
+// generate chart data to be used in plotting chart using Google Charts format
 
 function generateChartData(data,headers, color=null){
   const matrixData = convertDataToMatrix(data,headers, color);
   const chartdata = google.visualization.arrayToDataTable(matrixData);
   return chartdata;
 }
+
+// generate some fixed and some parameterized charting options for a graph
 
 function generateOptions(chartTitle,chartSubtitle,chartXAxisTitle,chartYAxisTitle){
   let options = {
@@ -81,10 +89,7 @@ function plotLineChart(chartData, chartOptions ,chartDivID){
   chart.draw(chartData, chartOptions);
 }
 
-function plotGeoChart(chartData, chartOptions ,chartDivID){
-  const chart = new google.visualization.GeoChart(document.getElementById(chartDivID));
-  chart.draw(chartData, chartOptions);
-}
+// plot the graph for most wins by a team
 
 function plotMostWinsChart(chartData){
   const data = generateChartData(chartData,["Winning Team","Number of Match Wins"]); 
