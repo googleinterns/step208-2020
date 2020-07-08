@@ -1,3 +1,4 @@
+google.charts.load('current', {'packages':['corechart','bar']});
 var autofillData;
 var tableHeadingData;
 function receiveAutofillData(autofillDataReceived, tableHeadingReceived){
@@ -131,10 +132,9 @@ function createStatDiv(chartDivID, field, fieldValue1, fieldValue2){
   chartStatsDiv.appendChild(stat2);
   parentDiv.appendChild(chartStatsDivHeading);
   parentDiv.appendChild(chartStatsDiv);
-  createComparisonChart(field, fieldValue1, fieldValue2);
+  createComparisonChart(fieldValue1, fieldValue2, chartDivID);
   return parentDiv;
 }
 
-function createComparisonChart(field, fieldValue1, fieldValue2){
-
+function createComparisonChart(fieldValue1,fieldValue2,containerID){
 }
