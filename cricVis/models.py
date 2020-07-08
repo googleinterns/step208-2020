@@ -1,6 +1,9 @@
 from django.db import models
 from firebase_admin import credentials, initialize_app, db
-# Create your models here.
+
+""" The main database containging the IPL data, and other additional data 
+required for creating the list of matches """
+
 teamImageName = {
     "Sunrisers Hyderabad": "cricVis/SRH.png",
     "Mumbai Indians":"cricVis/MI.png",
