@@ -59,7 +59,7 @@ def getHeadingNames(columnName):
 def getPlayerType(tableName):
     if tableName == "BatsmanStats":
         return "batting_style"
-    elif tableName == "BowlingStats":
+    elif tableName == "BowlerStats":
         return "bowling_style"
 
 def getKeyValues(tableName, reference):
