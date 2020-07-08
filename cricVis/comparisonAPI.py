@@ -44,9 +44,7 @@ def getPlayerCardData(playerData, playerType, playerName):
     return playerCardData
 
 def getChartData(matchTypeData):
-    chartData = {}
-    for data in matchTypeData:
-        chartData[getHeadingNames(data)] = matchTypeData[data]
+    chartData = { getHeadingNames(data): matchTypeData[data] for data in matchTypeData}
     return chartData
 
 def getHeadingNames(columnName):
