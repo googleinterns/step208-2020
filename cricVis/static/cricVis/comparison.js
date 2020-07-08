@@ -138,14 +138,6 @@ function createStatDiv(chartDivID, field, fieldValue1, fieldValue2, statsDiv){
 }
 
 function createComparisonChart(fieldValue1,fieldValue2,containerID) {
-  try {
-    if (document.getElementById(containerID)==null) throw `Container ID ${containerID} not found`;
-  }
-  catch (err)
-  {
-    console.log(err);
-    return;
-  }
   const data = google.visualization.arrayToDataTable([
       ['' , '' , '' ],
       ['', fieldValue1, fieldValue2]
