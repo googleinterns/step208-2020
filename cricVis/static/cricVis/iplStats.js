@@ -1,5 +1,5 @@
 google.charts.load("current", {packages: ['corechart', 'bar', 'geochart']});
-google.charts.setOnLoadCallback(drawChart);
+google.charts.setOnLoadCallback(drawIPLCharts);
 var allChartData;
 
 $('.carousel').carousel({
@@ -97,11 +97,15 @@ function plotMostWinsChart(chartData){
   plotBarChart(data, chartOptions, "mostMatchWins")
 }
 
+// plot the graph for the number of tosses won by a team
+
 function plotMostTossWinsChart(chartData){
   const data = generateChartData(chartData,["Winning Team","Number of Toss Wins"]); 
   let chartOptions = generateOptions("Most Toss Winning IPL Teams","Number of toss wins by every IPL team","Number of Toss Wins","Winning Team");
   plotBarChart(data, chartOptions, "mostTossWins");
 }
+
+// plot the graph for number of seasons won by a team
 
 function plotMostSeasonWinsChart(chartData){
   const data = generateChartData(chartData,["Winning Team","Number of Season Wins"]);
@@ -109,11 +113,15 @@ function plotMostSeasonWinsChart(chartData){
   plotBarChart(data, chartOptions, "mostSeasonWins");
 }
 
+// plot the graph for average score of a team throughout the tournament
+
 function plotAverageScoreChart(chartData){
   const data = generateChartData(chartData,["Team","Average Score"]);
   let chartOptions = generateOptions("Average Score of IPL Teams","Average Score of every IPL team over all seasons","Team","Average Score");
   plotColumnChart(data, chartOptions, "averageScore");
 }
+
+// plot the graph for the score of the team which batted first in a season final
 
 function plotFinalScoreBatFirstChart(chartData){
   const data = generateChartData(chartData,["Team","Final Match Score", { type: "string", role: "annotation" }]);
@@ -121,17 +129,15 @@ function plotFinalScoreBatFirstChart(chartData){
   plotColumnChart(data, chartOptions, "finalScoreBatFirst");
 }
 
+// plot the number of matches held in each stadium
+
 function plotMatchesStadiumChart(chartData){
   const data = generateChartData(chartData,["Stadium","Number of Matches"]);
   let chartOptions = generateOptions("Number of IPL Matches per stadium","A stadium wise distribution of IPL matches","Stadium","Number of Matches");
   plotColumnChart(data, chartOptions, "mostMatchesStadiumWise");
 }
 
-function plotMatchesCityChart(chartData){
-  const data = generateChartData(chartData,["City","Number of Matches"]);
-  let chartOptions = generateOptions("Number of IPL Matches per city","A city wise distribution of IPL matches","City","Number of Matches");
-  plotGeoChart(data, chartOptions, "mostMatchesCityWise");
-}
+// plot the lowest/highest score of every team throughout all the seasons
 
 function plotScoreTeams(chartData, scoreType, scoreTypeDiv){
   let flag = true;
@@ -152,7 +158,9 @@ function plotScoreTeams(chartData, scoreType, scoreTypeDiv){
   }
 }
 
-function drawChart(){
+// draw all the above statistics 
+
+function drawIPLCharts(){
   plotMostWinsChart(allChartData["teamWins"]);
   plotMostTossWinsChart(allChartData["tossWinsTeams"]);
   plotMostSeasonWinsChart(allChartData["seasonsWinsTeams"]);
