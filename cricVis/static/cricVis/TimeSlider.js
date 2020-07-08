@@ -11,10 +11,7 @@ class TimeSlider{
     this.createTimeSlider();
   }
   createDateList(chartDataResponse){
-    let dateList = [];
-    Object.keys(chartDataResponse).forEach(function(date){
-      dateList.push(date);
-    });
+    let dateList = Array.from(Object.keys(chartDataResponse));
     dateList.sort();
     return dateList;
   }
