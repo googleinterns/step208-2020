@@ -33,6 +33,10 @@ $('#fetchComparisonData').click(function(){
   });
 });
 
+function emptyDiv(divID){
+  $(`#${divID}`).empty();
+}
+
 function createAutofill(sourceData, inputID, type){
   $(`#${inputID}`).attr('disabled', false);
   $(`#${inputID}`).attr('placeholder', `Enter ${type} name...`);
@@ -81,6 +85,7 @@ function createComparisonUITeams(team1Data, team2Data){
 }
 
 function createCardForItem(cardHeaderID, cardBodyID, cardData){
+  emptyDiv(cardBodyID);
   Object.keys(cardData).forEach((key) => {
     if (key === "Player Name" | key === "Team Name"){
       document.getElementById(cardHeaderID).innerText = cardData[key];
@@ -98,11 +103,13 @@ function createComparisonHeadings(headingContainerID, heading1, heading2){
   const heading2Element = createHTMLElement("h3");
   heading1Element.innerText = heading1;
   heading2Element.innerText = heading2;
+  emptyDiv(headingContainerID);
   document.getElementById(headingContainerID).appendChild(heading1Element);
   document.getElementById(headingContainerID).appendChild(heading2Element);
 }
 
 function createStatsTable(statsDivID, statsData1, statsData2, category){
+  emptyDiv(statsDivID);
   let statsDiv = document.getElementById(statsDivID);
   let idCounter = 0;
   Object.keys(statsData1).forEach((key) => {
