@@ -2,14 +2,12 @@ google.charts.load('current', {'packages':['corechart','bar']});
 var autofillData;
 var tableHeadingData;
 function receiveAutofillData(autofillDataReceived, tableHeadingReceived){
-  console.log(tableHeadingReceived);
   autofillData = autofillDataReceived;
   tableHeadingData = tableHeadingReceived;
 }
 
 $('.comparisonTableChoice').on('input', function(){
   const tableName = $("input:radio[name='comparisonTable']:checked").val();
-  console.log(tableName);
   createAutofill(autofillData[tableName], "autofillFirst", tableHeadingData[tableName]);
   createAutofill(autofillData[tableName], "autofillSecond", tableHeadingData[tableName]);
 });
@@ -27,7 +25,6 @@ $('#fetchComparisonData').click(function(){
       tableName: tableName,
     },
     success: function(comparisonData){
-      console.log(JSON.parse(comparisonData));
       createComparisonUI(tableName, JSON.parse(comparisonData));
     },
     error: function(error){
@@ -69,9 +66,9 @@ function createComparisonUIPlayers(player1Data, player2Data){
   createComparisonHeadings("TestHeadingContainer", player1Data["cardData"]["Player Name"], player2Data["cardData"]["Player Name"]);
   document.getElementById("comparisonPlayerContainer").style.visibility = "visible";
   document.getElementById("cardDataContainer").style.visibility = "visible";
-  createStatsTable("T20ComparisonStats", player1Data["chartDataT20"], player2Data["chartDataT20"]);
-  createStatsTable("ODIComparisonStats", player1Data["chartDataODI"], player2Data["chartDataODI"]);
-  createStatsTable("TestComparisonStats", player1Data["chartDataTest"], player2Data["chartDataTest"]);
+  createStatsTable("T20ComparisonStats", player1Data["chartDataT20"], player2Data["chartDataT20"], "T20");
+  createStatsTable("ODIComparisonStats", player1Data["chartDataODI"], player2Data["chartDataODI"], "ODI");
+  createStatsTable("TestComparisonStats", player1Data["chartDataTest"], player2Data["chartDataTest"], "Test");
 }
 
 function createComparisonUITeams(team1Data, team2Data){
@@ -80,17 +77,15 @@ function createComparisonUITeams(team1Data, team2Data){
   createComparisonHeadings("TeamHeadingContainer", team1Data["cardData"]["Team Name"], team2Data["cardData"]["Team Name"]);
   document.getElementById("comparisonPlayerContainer").style.visibility = "visible";
   document.getElementById("cardDataContainer").style.visibility = "visible";
-  createStatsTable("TeamComparisonStats", team1Data["chartData"], team2Data["chartData"]);
+  createStatsTable("TeamComparisonStats", team1Data["chartData"], team2Data["chartData"], "Team");
 }
 
 function createCardForItem(cardHeaderID, cardBodyID, cardData){
   Object.keys(cardData).forEach((key) => {
     if (key === "Player Name" | key === "Team Name"){
-      console.log(key);
       document.getElementById(cardHeaderID).innerText = cardData[key];
     }
     else{
-      console.log(key,"Else");
       const dataTag = createHTMLElement("p", "card-text");
       dataTag.innerText = `${key} : ${cardData[key]}`;
       document.getElementById(cardBodyID).appendChild(dataTag);
@@ -107,17 +102,16 @@ function createComparisonHeadings(headingContainerID, heading1, heading2){
   document.getElementById(headingContainerID).appendChild(heading2Element);
 }
 
-function createStatsTable(statsDivID, statsData1, statsData2){
-  const statsDiv = document.getElementById(statsDivID);
+function createStatsTable(statsDivID, statsData1, statsData2, category){
+  let statsDiv = document.getElementById(statsDivID);
   let idCounter = 0;
   Object.keys(statsData1).forEach((key) => {
-    const tableRow = createStatDiv(`comparisonChartDiv${idCounter}`, key, statsData1[key], statsData2[key]);
-    statsDiv.appendChild(tableRow);
+    createStatDiv(`comparisonChartDiv${category}${idCounter}`, key, statsData1[key], statsData2[key], statsDiv);
     idCounter ++;
   });
 }
 
-function createStatDiv(chartDivID, field, fieldValue1, fieldValue2){
+function createStatDiv(chartDivID, field, fieldValue1, fieldValue2, statsDiv){
   const parentDiv = createHTMLElement("div", "list-group-item list-group-item-action flex-column align-items-center chartStatsContainer");
   const chartStatsDiv = createHTMLElement("div", "d-flex w-100 justify-content-between");
   const chartDiv = createHTMLElement("div", "comparisonChartDiv", chartDivID);
@@ -132,8 +126,8 @@ function createStatDiv(chartDivID, field, fieldValue1, fieldValue2){
   chartStatsDiv.appendChild(stat2);
   parentDiv.appendChild(chartStatsDivHeading);
   parentDiv.appendChild(chartStatsDiv);
+  statsDiv.appendChild(parentDiv);
   createComparisonChart(fieldValue1, fieldValue2, chartDivID);
-  return parentDiv;
 }
 
 function createComparisonChart(fieldValue1,fieldValue2,containerID){
