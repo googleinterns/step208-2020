@@ -137,5 +137,30 @@ function createStatDiv(chartDivID, field, fieldValue1, fieldValue2, statsDiv){
   createComparisonChart(fieldValue1, fieldValue2, chartDivID);
 }
 
-function createComparisonChart(fieldValue1,fieldValue2,containerID){
+function createComparisonChart(fieldValue1,fieldValue2,containerID) {
+  const data = google.visualization.arrayToDataTable([
+      ['' , '' , '' ],
+      ['', fieldValue1, fieldValue2]
+  ]);
+  const options_fullStacked = {
+    'width':400,
+    'height':54,
+    isStacked: 'percent',
+    legend: 'none',
+    hAxis: {
+      textPosition: 'none',
+      baselineColor: 'transparent',
+      ticks: []
+    },
+    vAxis: {
+      textPosition: 'none',
+      baselineColor: 'transparent',
+      ticks: []
+    },
+    'tooltip' : {
+      trigger: 'none',
+    }
+  };
+  const chart = new google.visualization.BarChart(document.getElementById(containerID));
+  chart.draw(data, options_fullStacked);
 }

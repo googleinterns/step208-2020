@@ -63,39 +63,31 @@ class TimeSlider{
       return 0;
     }
  }
-  // drawChart(chart, options){
-  //   chart.draw(data, options);
-  // }
-  createChart(chartDivID, metaDataResponse, yearResponse) {
+  createChart(chartDivID, metaDataResponse, chartPlotData) {
     $(`#${chartDivID}`).empty();
     let chartValues = [];
-    Object.keys(yearResponse).forEach((value) => {
-      chartValues.push({"xValue":value, "yValue":yearResponse[value]});
+    Object.keys(chartPlotData).forEach((value) => {
+      chartValues.push({"xValue":value, "yValue":chartPlotData[value]});
     });
     chartValues.sort(this.getSortOrderDescending("yValue"));
+    this.drawBarChart(chartValues,metaDataResponse.xAxisLabel,metaDataResponse.yAxisLabel,
+      metaDataResponse.title,chartDivID)
+  }
+  drawBarChart(chartData,xAxisLabel,yAxisLabel,chartTitle,containerID) {
     const data = new google.visualization.DataTable();
-    data.addColumn('string', metaDataResponse.xAxisLabel);
-    data.addColumn('number', metaDataResponse.yAxisLabel);
-    chartValues.forEach((value) => {
-      data.addRow([value.xValue, value.yValue]);
+    data.addColumn('string', yAxisLabel);
+    data.addColumn('number', xAxisLabel);
+    chartData.forEach((value) => {
+        data.addRow([value.xValue, value.yValue]);
     });
-
     const options = {
       height: 600,
       chart: {
-        title: metaDataResponse.title,
+        title: chartTitle,
       },
       bars: 'horizontal',
     };
-    const chart = new google.charts.Bar(document.getElementById(chartDivID));
+    const chart = new google.charts.Bar(document.getElementById(containerID));
     chart.draw(data, options);
-    console.log("here");
-    
-    console.log("hello");
-    // if (this.carouselDiv.id !== "carouselDiv0"){
-    //   console.log("entered");
-    //   console.log(this.carouselDiv.classList);
-    //   this.carouselDiv.classList.remove("active");
-    // }
   }
 }
